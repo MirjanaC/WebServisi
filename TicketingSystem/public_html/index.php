@@ -11,6 +11,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
 
 ?>
+
 <html>
 <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
