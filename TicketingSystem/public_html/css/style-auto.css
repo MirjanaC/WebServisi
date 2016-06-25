@@ -3,8 +3,7 @@
     color: #ffffff;
 }
 [data-brix_class="1466802309147"]{
-    background-color: #389dab;
-    color: #ffffff;
+    background-image: images/ticket.png;
 }
 [data-brix_class="1466802250668"]{
     color: #ffffff;
@@ -15,7 +14,6 @@
     background-color: #389dab;
     margin-top: 25px;
     font-size: 20px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 [data-brix_class="1466801424887"]{
     margin-top: 20px;
@@ -46,28 +44,23 @@
     margin-bottom: 20px;
 }
 [data-brix_class="1466801075786"]{
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
 }
 [data-brix_class="1466801006952"]{
     margin-bottom: 20px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 20px;
 }
 [data-brix_class="1466800981358"]{
     font-size: 20px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     margin-bottom: 20px;
 }
 [data-brix_class="1466800875659"]{
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
 }
 [data-brix_class="1466800797345"]{
     font-size: 20px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     margin-bottom: 20px;
 }
 [data-brix_class="1466800573832"]{
@@ -76,6 +69,7 @@
 }
 [data-brix_class="1466800444174"]{
     margin-bottom: 45px;
+    background-color: #389dab;
 }
 [data-brix_class="1466800402415"]{
     font-size: 20px;
@@ -100,7 +94,6 @@
     font-size: 14;
 }
 [data-brix_class="1466799338091"]{
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 14;
 }
 [data-brix_class="1466799142936"]{

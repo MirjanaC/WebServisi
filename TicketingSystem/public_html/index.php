@@ -9,23 +9,25 @@
 // load up your config file
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
-require_once(TEMPLATES_PATH . "/header.php");
+
 ?>
-    <div id="container">
-        <div id="content">
-            <!-- content -->
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controller/MainController.js"></script>
+    
+</head>
+</head>
+    <body ng-app = "myApp">
+        <div class = "main" ng-controller = "MainController">
+
+        <?php require_once(TEMPLATES_PATH . "/header.php"); ?>
+        
+        <h1>{{ title }}</h1>
+
+        <?php require_once(TEMPLATES_PATH . "/footer.php"); ?>
         </div>
-        <?php
-        require_once(TEMPLATES_PATH . "/rightPanel.php");
-        ?>
-    </div>
 
-    <p>Jovana i Mima se vole</p>
-    <script type="text/javascript" src="js/jovana.js">
-    </script>
-    <button onclick="test()">Click me</button>
-
-
-<?php
-    require_once(TEMPLATES_PATH . "/footer.php");
-?>
+    </body>
+</html>
