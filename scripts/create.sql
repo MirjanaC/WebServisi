@@ -10,7 +10,7 @@ CREATE TABLE Users (
 	user_lastname VARCHAR(20) NOT NULL,
 	user_email VARCHAR(40) NOT NULL,
 	user_password VARCHAR(20)NOT NULL,
-	user_role VARCHAR(2) NOT NULL,
+	user_role VARCHAR(10) NOT NULL,
 	PRIMARY KEY (user_id)
 );
 
@@ -30,8 +30,8 @@ CREATE TABLE Tasks (
 	task_title VARCHAR(20) NOT NULL, 
 	task_creationDate DATE NOT NULL,
     task_userCreator VARCHAR(20) NOT NULL,
-    task_userAssigned VARCHAR(20) NOT NULL,
-	task_description VARCHAR(40) NOT NULL,
+    task_userAssigned VARCHAR(20),
+	task_description VARCHAR(40),
 	task_priority VARCHAR(20)NOT NULL,
 	task_status VARCHAR(20) NOT NULL,
     user_id INT,
