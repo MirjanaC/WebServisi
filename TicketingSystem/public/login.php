@@ -9,6 +9,7 @@
     if ($user_id != null) {
         $index_page = INDEX_PAGE;
         header("Location: $index_page");
+        exit;
     }
 ?>
 

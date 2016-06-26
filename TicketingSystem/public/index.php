@@ -16,6 +16,7 @@ $user_id = $auth->isLoggedIn($token);
 if ($user_id == null) {
     $login_page = LOGIN_PAGE;
     header("Location: $login_page");
+    exit;
 }
 ?>
 

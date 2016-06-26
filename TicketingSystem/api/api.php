@@ -6,8 +6,10 @@
  * Time: 9:31 PM
  */
 
+use Psr\Http\Message\ResponseInterface;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
 
 require '../vendor/autoload.php';
 require '../resources/config.php';
@@ -42,6 +44,23 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
+
+$app->add(function (ServerRequestInterface $request, ResponseInterface $response, callable $next) {
+    // Check if is requested api/login
+    $path = $request->getUri()->getPath();
+    $method = $request->getMethod();
+    if (!($path == 'login' && $method == 'POST')) {
+        $token = $_SERVER["HTTP_AUTHORIZATION"];
+        $auth = new Auth($this->db);
+        $user_id = $auth->isLoggedIn($token);
+        if ($user_id == null) {
+            return $response->withStatus(401);
+        }
+    }
+
+    return $next($request, $response);
+});
+
 #####################################################################
 #                           REST API                                #
 #####################################################################
@@ -56,15 +75,6 @@ $app->post('/login', function (Request $request, Response $response) {
     $email = $loginData['user_email'];
     $password = $loginData['user_password'];
 
-    $conf = array(
-        "db" => array(
-            "dbname" => "web_services",
-            "username" => "root",
-            "password" => "",
-            "host" => "localhost"
-        ),
-    );
-    $auth = new Auth($conf);
     // Check email & password pair
     $userDao = new UsersDao($this->db);
     $user = $userDao->authenticate($email, $password);
@@ -72,6 +82,7 @@ $app->post('/login', function (Request $request, Response $response) {
     if ($user != null) {
         // generate token
         $token = md5(uniqid(rand(), true));
+        $auth = new Auth($this->db);
         $auth->logIn($token, $user['user_id']);
     }
 
@@ -84,15 +95,7 @@ $app->delete('/logout', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: DELETE /logout");
 
     $token = $_SERVER["HTTP_AUTHORIZATION"];
-    $conf = array(
-        "db" => array(
-            "dbname" => "web_services",
-            "username" => "root",
-            "password" => "",
-            "host" => "localhost"
-        ),
-    );
-    $auth = new Auth($conf);
+    $auth = new Auth($this->db);
     $auth->logOut($token);
 
     return $response;
