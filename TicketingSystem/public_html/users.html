@@ -1,0 +1,38 @@
+
+        <div class="container-fluid" data-brix_class="1466800444174">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" data-brix_class="1466802309147" name="home">Home</a></li>
+                    <li><a href="#" name="projects" data-brix_class="1466802250668">Projects</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a span="" class="glyphicon glyphicon-log-in" data-toggle="dropdown" href="#" data-brix_class="1466802392777" name="account">Account&nbsp;<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <span data-brix_class="1466800402415">
+            List of users<br>
+        </span>
+     
+    
+        <div ng-controller = "userCtrl"> 
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Firstname</td>
+                        <td>Lastname</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="u in users">
+                        <td>{{ u.user_name }}</td>
+                        <td>{{ u.user_lastname }}</td>
+                    <tr>
+                </tbody>
+            </table>
+        </div>
