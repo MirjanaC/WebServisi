@@ -4,13 +4,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 
-	.state('login', {
-		url: '/login',
-		templateUrl: 'public_html/login.html'
-	})
-	.state('users', {
-		url: '/users',
-		templateUrl: 'public_html/users.html'
+	.state('home', {
+		url: '/',
+		templateUrl: '../public_html/login.html'
 	});
 
 });

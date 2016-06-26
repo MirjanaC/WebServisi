@@ -57,7 +57,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
         
         <h1>{{ title }}</h1>
 
-        <div ui-view="">
+        <div ui-view>
         </div>
 
         <div ng-controller = "userCtrl"> 
