@@ -53,3 +53,10 @@ CREATE TABLE Comments (
     FOREIGN KEY fk_user (user_id) REFERENCES Users(user_id),
     FOREIGN KEY fk_task (task_id) REFERENCES Tasks(task_id)
 );
+
+CREATE TABLE Auth (
+	auth_token VARCHAR(32) NOT NULL,
+	auth_user_id INT NOT NULL, 
+	PRIMARY KEY (auth_token),
+    FOREIGN KEY fk_user (auth_user_id) REFERENCES Users(user_id)
+);

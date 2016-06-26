@@ -11,6 +11,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 require '../resources/config.php';
+require '../auth/Auth.php';
 
 spl_autoload_register(function ($classname) {
     require ("dao/" . $classname . ".php");
@@ -44,6 +45,58 @@ $container['db'] = function ($c) {
 #####################################################################
 #                           REST API                                #
 #####################################################################
+
+#####################################################################
+#                             LOGIN                                 #
+// Login
+$app->post('/login', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: POST /login");
+
+    $loginData = json_decode($request->getBody(), true);
+    $email = $loginData['user_email'];
+    $password = $loginData['user_password'];
+
+    $conf = array(
+        "db" => array(
+            "dbname" => "web_services",
+            "username" => "root",
+            "password" => "",
+            "host" => "localhost"
+        ),
+    );
+    $auth = new Auth($conf);
+    // Check email & password pair
+    $userDao = new UsersDao($this->db);
+    $user = $userDao->authenticate($email, $password);
+    $token = null;
+    if ($user != null) {
+        // generate token
+        $token = md5(uniqid(rand(), true));
+        $auth->logIn($token, $user['user_id']);
+    }
+
+    $response = json_encode($token);
+    return $response;
+});
+
+// Logout
+$app->delete('/logout', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: DELETE /logout");
+
+    $token = $_SERVER["HTTP_AUTHORIZATION"];
+    $conf = array(
+        "db" => array(
+            "dbname" => "web_services",
+            "username" => "root",
+            "password" => "",
+            "host" => "localhost"
+        ),
+    );
+    $auth = new Auth($conf);
+    $auth->logOut($token);
+
+    return $response;
+});
 
 #####################################################################
 #                             USERS                                 #

@@ -6,15 +6,24 @@
  * Time: 9:09 AM
  */
 
-// load up your config file
+require_once '../auth/Auth.php';
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
+
+// Check if user is logged-in
+$token = $_SERVER["HTTP_AUTHORIZATION"];
+$auth = new Auth($config);
+$user_id = $auth->isLoggedIn($token);
+if ($user_id == null) {
+    $login_page = LOGIN_PAGE;
+    header("Location: $login_page");
+}
 ?>
+
 <html>
 <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controller/MainController.js"></script>
-    
 </head>
 </head>
     <body ng-app = "myApp">

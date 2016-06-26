@@ -83,4 +83,17 @@ class UsersDao extends AbstractDao
             throw new Exception("could not save record");
         }
     }
+
+    public function authenticate($email, $password) {
+        $user = null;
+
+        $sql = "SELECT * FROM users WHERE user_email = :user_email AND user_password = :user_password";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["user_email" => $email, "user_password" => $password]);
+        if($result) {
+            $user = $stmt->fetch();
+        }
+
+        return $user;
+    }
 }
