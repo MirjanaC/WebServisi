@@ -1,7 +1,7 @@
-app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFactory',
-		function($scope, ProjectFactory, $location, UserFactory) {
+app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFactory', '$stateParams',
+		function($scope, ProjectFactory, $location, UserFactory, $stateParams) {
 
-
+	
 	$scope.findUsers = function() {
           UserFactory.query(function(data){
             $scope.users = data;
