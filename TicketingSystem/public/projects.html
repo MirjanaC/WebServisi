@@ -1,0 +1,41 @@
+<section>        
+    <span data-brix_class="1466800402415">
+        List of projects<br>
+    </span>
+    
+    <div ng-controller = "projectCtrl" ng-init="find()">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Name</th>
+                    <th>Tasks</th>
+                    <th>Users on project</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in projects">
+                    <td>{{ p.project_label }}</td>
+                    <td>{{ p.project_name }}</td>
+                    <td></td>
+                    <td></td>
+                    <td> <a class="btn text-center" href="#/projects/{{p.project_id}}/edit" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn" data-ng-click="delete(p)" data-brix_class="1467029527557"> <!--remove(user) -->
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody></table>
+            <div>
+                <a class="btn" href="#/createproject" data-brix_class="1467029527557"> 
+                    <i class="glyphicon glyphicon-plus"></i>
+                 </a>
+            </div>
+    </div>
+</section>

@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="projectCtrl" ng-init=findUsers()>
  <span data-brix_class="1466800402415">Create project<br>
         </span>
         <div>
@@ -7,7 +7,10 @@
                 <span class="col-md-8" data-brix_class="1466800875659">Sign to</span></div>
                 <div class="col-md-6">
                     <input type="text" ng-model="project.name" class="form-control" name="name" data-brix_class="1466801214715">
-                    <select ng-model="project.user" ng-options="user.user_name for user in users" class="form-control" multiple="">
+                    <select ng-model="project.users" ng-options="user.user_name for user in users" class="form-control" multiple="">
+                        <option data-ng-repeat="user in users" > 
+                            {{ user.user_name }} 
+                        </option> 
                     </select>
                 </div>
             </div>

@@ -1,0 +1,38 @@
+<section ng-controller="taskCtrl">
+   <span data-brix_class="1466800402415">
+            Create new task<br>
+   </span>
+     <form ng-submit="add()" novalidate>
+     <div>
+            <div class="row" data-brix_class="1466801424887">
+                <div class="col-md-2" data-brix_class="1466801408662">
+                    <span class="col-md-8" name="name" data-brix_class="1466800797345">
+                        Name
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        Description
+                    </span>
+                    <span data-brix_class="1466864527600" class="col-md-20" name="creation_date">
+                        Creation date
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864862360">
+                        Priority
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864900359">
+                        Status
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" name="name" data-brix_class="1466801214715">
+                    <input class="form-control" name="description" data-brix_class="1466864718449">
+                    <input class="form-control" data-brix_class="1466864797806">
+                    <select class="form-control" name="priority" data-brix_class="1466865092412"></select>
+                    <select class="form-control" name="status"></select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+        </div>
+        </form>
+</section>

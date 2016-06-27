@@ -1,0 +1,41 @@
+<section ng-controller = "userCtrl" ng-init="find()">
+    <span data-brix_class="1466800402415">
+        List of users<br>
+    </span>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="u in users">
+                    <td>{{ u.user_name }}</td>
+                    <td>{{ u.user_lastname }}</td>
+                    <td>{{ u.user_role}}</td>
+                    <td>{{ u.user_email }}</td>
+                    <td> <a class="btn text-center" href="#/users/{{u.user_id}}/edit" data-brix_class="1467029462861"><!--url do edita npr /users/{{user._id}}/edit -->
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn" data-ng-click="delete(u)" data-brix_class="1467029527557"> 
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody></table>
+                <div>
+                <a class="btn" href="#/createuser" data-brix_class="1467029527557"> 
+                    <i class="glyphicon glyphicon-plus"></i>
+                 </a>
+                 </div>
+    </div>
+</section>

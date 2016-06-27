@@ -1,9 +1,6 @@
 app.factory('ProjectFactory', function($resource, $http) {
 
-	function getAll() {
-		return $resource('/WebServisi/TicketingSystem/api/projects');
-	}
-
+/*
 	function addProject(project) {
 		return $http.post('/WebServisi/TicketingSystem/api/projects', project).then(function(response) {
 			return response.data;
@@ -12,10 +9,18 @@ app.factory('ProjectFactory', function($resource, $http) {
 
 	return {
 
-		getAll : getAll,
-		addProject : addProject,
+		addProject : addProject
 
 	}
+*/
+
+	return $resource('/WebServisi/TicketingSystem/api/projects/:project_id', {
+            user_id: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
+        });
 	
 
 });

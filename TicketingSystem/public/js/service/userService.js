@@ -1,5 +1,7 @@
-app.factory('UserFactory', function($resource, $http) {
+app.factory('UserFactory', ['$resource',
+	function($resource) {
 
+/*
 	function getAll() {
 		return $resource('/WebServisi/TicketingSystem/api/users');
 	}
@@ -16,6 +18,14 @@ app.factory('UserFactory', function($resource, $http) {
 		addUser : addUser,
 
 	}
+*/
+	return $resource('/WebServisi/TicketingSystem/api/users/:user_id', {
+            user_id: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
+        });
 	
 
-});
+}]);

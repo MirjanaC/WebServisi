@@ -1,0 +1,28 @@
+<section ng-controller="userCtrl" ng-init="findOne()">
+    <span data-brix_class="1466800402415">
+        Edit user<br>
+    </span>
+    <form ng-submit="update()" novalidate>
+    <div>
+        <div class="row" data-brix_class="1466801424887">
+            <div class="col-md-2" data-brix_class="1466801408662">
+            <span class="col-md-8" name="name" data-brix_class="1466800875659">Name</span>
+            <span class="col-md-8" data-brix_class="1466800875659">Last name</span>
+            <span class="col-md-8" data-brix_class="1466800981358" name="email">Email</span>
+            <span class="col-md-8" data-brix_class="1466801006952" name="password">Password</span>
+            <span class="col-md-8" data-brix_class="1466801075786" name="role">Role</span>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" name="name" data-brix_class="1466801214715" ng-model="user.user_name">
+            <input class="form-control" data-brix_class="1466801257042" name="last_name" ng-model="user.user_lastname">
+            <input class="form-control" data-brix_class="1466801267231" name="email" ng-model="user.user_email">
+            <input type="password" class="form-control" data-brix_class="1466801277136" name="password" ng-model="user.user_password">
+            <input class="form-control" data-brix_class="1466801287762" name="role" ng-model="user.user_role">
+        </div>
+    </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+    </div>
+    </form>
+</section>
