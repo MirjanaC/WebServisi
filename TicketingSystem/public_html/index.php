@@ -40,7 +40,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
         
                         
         <!-- User -->
-        <link href="style.css" rel="stylesheet">
+        <!-- <link href="style.css" rel="stylesheet"> --> 
         <link href="css/style-auto.css" rel="stylesheet">
         <link href="css/style-auto.css" rel="stylesheet">
         
