@@ -1,4 +1,5 @@
-app.controller('projectCtrl', function($scope, ProjectFactory, $location, UserFactory) {
+app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFactory',
+		function($scope, ProjectFactory, $location, UserFactory) {
 
 	ProjectFactory.getAll().query(function(data) {
 		$scope.projects = data;
@@ -37,4 +38,4 @@ app.controller('projectCtrl', function($scope, ProjectFactory, $location, UserFa
 
 	}
 
-});
+}]);
