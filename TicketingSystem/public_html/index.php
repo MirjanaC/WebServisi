@@ -21,10 +21,14 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
     <!-- services -->
     <script type="text/javascript" src="js/service/userService.js"></script>
+    <script type="text/javascript" src="js/service/projectService.js"></script>
+    <script type="text/javascript" src="js/service/taskService.js"></script>
 
     <!-- controllers -->
     <script type="text/javascript" src="js/controller/MainController.js"></script>
     <script type="text/javascript" src="js/controller/userController.js"></script>
+    <script type="text/javascript" src="js/controller/projectController.js"></script>
+    <script type="text/javascript" src="js/controller/taskController.js"></script>
 
     <!-- node modules -->
     <script type="text/javascript" src="js/config/routes.js"></script>
@@ -57,25 +61,12 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
         
         <h1>{{ title }}</h1>
 
+        <br/>
+
         <div ui-view>
         </div>
 
-        <div ng-controller = "userCtrl"> 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <td>Firstname</td>
-                        <td>Lastname</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="u in users">
-                        <td>{{ u.user_name }}</td>
-                        <td>{{ u.user_lastname }}</td>
-                    <tr>
-                </tbody>
-            </table>
-        </div>
+        
 
         <?php require_once(TEMPLATES_PATH . "/footer.php"); ?>
         </div>
