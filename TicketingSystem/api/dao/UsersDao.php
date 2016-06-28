@@ -27,10 +27,10 @@ class UsersDao extends AbstractDao
         }
     }
 
-    public function delete($id) {
+    public function delete($user) {
         $sql = "DELETE FROM users WHERE user_id = :user_id";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(["user_id" => $id]);
+        $stmt->execute(["user_id" => $user['user_id']]);
     }
 
     public function update($user) {
@@ -84,16 +84,11 @@ class UsersDao extends AbstractDao
         }
     }
 
-    public function authenticate($email, $password) {
-        $user = null;
+    public function fetchNamesOfUsersWorkingOnProject($id) {
 
-        $sql = "SELECT * FROM users WHERE user_email = :user_email AND user_password = :user_password";
-        $stmt = $this->db->prepare($sql);
-        $result = $stmt->execute(["user_email" => $email, "user_password" => $password]);
-        if($result) {
-            $user = $stmt->fetch();
-        }
+    }
 
-        return $user;
+    public function fetchTasksOnProject($id) {
+
     }
 }

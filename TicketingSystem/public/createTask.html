@@ -1,0 +1,63 @@
+<section ng-controller="taskCtrl">
+   <span data-brix_class="1466800402415">
+            Create new task<br>
+   </span>
+     <!--<form ng-submit="add()" novalidate>-->
+     <div>
+            <div class="row" data-brix_class="1466801424887">
+                <div class="col-md-2" data-brix_class="1466801408662">
+                    <span class="col-md-8" name="name" data-brix_class="1466800797345">
+                        Mark
+                    </span>
+                    <span class="col-md-8" name="name" data-brix_class="1466800797345">
+                        Name
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        Description
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        Creator
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        Assigned
+                    </span>
+                    <!--span data-brix_class="1466864527600" class="col-md-20" name="creation_date">
+                        Creation date
+                    </span-->
+                    <span class="col-md-8" data-brix_class="1466864862360">
+                        Priority
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864900359">
+                        Status
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <input ng-model="task.mark" class="form-control" name="mark" placeholder="Task mark" data-brix_class="1466801214715">
+                    <input ng-model="task.name" class="form-control" name="name" placeholder="Task name" data-brix_class="1466801214715">
+                    <input ng-model="task.description" class="form-control" name="description" placeholder="Task description" data-brix_class="1466864718449">
+                    <input ng-model="task.creator" class="form-control" name="creator" placeholder="Task creator" data-brix_class="1466864718449">
+                    <input ng-model="task.assigned" class="form-control" name="assigned" placeholder="Task assigned to" data-brix_class="1466864718449">
+                    <!--input ng-model="task.creationDate" type="date" min="2010-01-01" max="2016-12-31" class="form-control" placeholder="Task creation date" data-brix_class="1466864797806"-->
+                    <select ng-model="task.priority" class="form-control" name="priority" data-brix_class="1466865092412">
+                        <option value="">Select task priority</option>
+                        <option value="blocker">Blocker</option>
+                        <option value="critical">Critical</option>
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="trivial">Trivial</option>
+                    </select>
+                    <select ng-model="task.status" class="form-control" name="status">
+                        <option value="">Select task status</option>
+                        <option value="todo">To do</option>
+                        <option value="inprogress">In progress</option>
+                        <option value="verify">Verify</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" ng-click="add()" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+        </div>
+        <!--</form>-->
+</section>

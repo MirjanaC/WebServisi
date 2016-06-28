@@ -1,0 +1,29 @@
+<section ng-controller="projectCtrl" ng-init=findOne()>
+        <span data-brix_class="1466800402415">Edit project<br>
+        </span>
+        <form ng-submit="update()" novalidate>
+        <div>
+            <div class="row" data-brix_class="1466801424887">
+                <div class="col-md-2" data-brix_class="1466801408662">
+                    <span class="col-md-8" name="name" data-brix_class="1466800797345">
+                        Name
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466800875659">
+                        Sign to
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" ng-model="project.project_name" class="form-control" name="name" data-brix_class="1466801214715">
+                    <select ng-model="project.users" class="form-control" multiple="">
+                         <option data-ng-repeat="user in users" > 
+                            {{ user.user_name }} 
+                        </option> 
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+        <button type="submit" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+    </div>
+        </form>
+</section>

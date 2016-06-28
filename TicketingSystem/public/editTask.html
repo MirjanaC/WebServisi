@@ -1,0 +1,45 @@
+<section ng-controller="taskCtrl" ng-init="findOne()">
+   <span data-brix_class="1466800402415">
+            Edit task<br>
+   </span>
+     <form ng-submit="update()" novalidate>
+     <div>
+            <div class="row" data-brix_class="1466801424887">
+                <div class="col-md-2" data-brix_class="1466801408662">
+                    <span class="col-md-8" name="name" data-brix_class="1466800797345">
+                        Name
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        Description
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864862360">
+                        Priority
+                    </span>
+                    <span class="col-md-8" data-brix_class="1466864900359">
+                        Status
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <input ng-model="task.task_title" class="form-control" name="name" data-brix_class="1466801214715" >
+                    <input ng-model="task.task_description" class="form-control" name="description" data-brix_class="1466864718449" ng-model="task.task_description">
+                    <select ng-model="task.task_priority" class="form-control" name="priority" data-brix_class="1466865092412">
+                        <option value="blocker">Blocker</option>
+                        <option value="critical">Critical</option>
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="trivial">Trivial</option>
+                    </select>
+                    <select ng-model="task.task_status" class="form-control" name="status">
+                        <option value="todo">To do</option>
+                        <option value="inprogress">In progress</option>
+                        <option value="verify">Verify</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+        <div>
+            <button type="submit" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+        </div>
+        </div>
+        </form>
+</section>

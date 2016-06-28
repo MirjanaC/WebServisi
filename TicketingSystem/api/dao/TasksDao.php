@@ -44,7 +44,7 @@ class TasksDao extends AbstractDao
                   task_priority = :task_priority,
                   task_status = :task_status,
                   user_id = :user_id,
-                  project_id = :project_id,
+                  project_id = :project_id
                 WHERE
                   task_id = :task_id
                ";
@@ -107,5 +107,13 @@ class TasksDao extends AbstractDao
         if(!$result) {
             throw new Exception("could not save record");
         }
+    }
+
+    public function fetchNamesOfUsersWorkingOnProject($id) {
+
+    }
+
+    public function fetchTasksOnProject($id) {
+
     }
 }

@@ -13,7 +13,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 require '../vendor/autoload.php';
 require '../resources/config.php';
-require '../auth/Auth.php';
 
 spl_autoload_register(function ($classname) {
     require ("dao/" . $classname . ".php");
@@ -221,6 +220,28 @@ $app->get('/projects', function (Request $request, Response $response) {
 
     $projectsDao = new ProjectsDao($this->db);
     $projects = $projectsDao->fetchAll();
+    $response = json_encode($projects);
+    return $response;
+});
+
+// Fetching users working on project 
+$app->get('/projectsUsername/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /projectsUsername/{id}");
+    $id = $request->getAttribute('id');
+
+    $projectsDao = new ProjectsDao($this->db);
+    $projects = $projectsDao->fetchNamesOfUsersWorkingOnProject($id);
+    $response = json_encode($projects);
+    return $response;
+});
+
+//
+$app->get('/projectsTasks/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /projectsTasks/{id}");
+    $id = $request->getAttribute('id');
+
+    $projectsDao = new ProjectsDao($this->db);
+    $projects = $projectsDao->fetchTasksOnProject($id);
     $response = json_encode($projects);
     return $response;
 });
