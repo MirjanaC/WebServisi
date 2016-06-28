@@ -1,16 +1,25 @@
 <?php
-    require_once '../auth/Auth.php';
-    require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
-    // Check if user is logged-in
-    $token = $_SERVER["HTTP_AUTHORIZATION"];
-    $auth = new Auth($config);
-    $user_id = $auth->isLoggedIn($token);
-    if ($user_id != null) {
-        $index_page = INDEX_PAGE;
-        header("Location: $index_page");
-        exit;
+require_once '../auth/Auth.php';
+require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
+
+// Check if user is logged-in
+$user_id = null;
+if (isset($_COOKIE["ticketingSystem"])) {
+    $token = $_COOKIE["ticketingSystem"];
+    if (!empty($token)) {
+        $pdo = new PDO("mysql:host=" . $config['db']['host'] . ";dbname=" . $config['db']['dbname'],
+            $config['db']['username'], $config['db']['password']);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $auth = new Auth($pdo);
+        $user_id = $auth->isLoggedIn($token);
     }
+}
+if ($user_id !== null) {
+    header("Location: " . INDEX_PAGE);
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,18 +40,22 @@
         <link href="css/signin.css" rel="stylesheet">
         <link href="css/style-auto.css" rel="stylesheet">
     </head>
-    <body data-brix_class="1466797764013">
-        <div class="container">
+    <body data-brix_class="1466797764013" ng-app = "myApp">
+        <div class="container" ng-controller = "LoginController">
             <form class="form-signin text-center" role="form">
                 <h2 class="form-signin-heading" data-brix_class="1466797919220">Please sign in</h2>
-                <input type="email" class="form-control text-left" placeholder="Email address" required="" autofocus="" data-brix_class="1466797867149">
-                <input type="password" class="form-control text-left" placeholder="Password" required="" data-brix_class="1466797887560">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" data-brix_class="1466797946433">Sign in</button>
+                <input type="email" ng-model="user_email" class="form-control text-left" placeholder="Email address" required="" autofocus="" data-brix_class="1466797867149">
+                <input type="password" ng-model="user_password" class="form-control text-left" placeholder="Password" required="" data-brix_class="1466797887560">
+                <button ng-click="login()" class="btn btn-lg btn-primary btn-block" type="submit" data-brix_class="1466797946433">Sign in</button>
             </form>
         </div>
 
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controller/LoginController.js"></script>
   </body>
 </html>

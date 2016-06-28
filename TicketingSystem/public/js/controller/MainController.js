@@ -1,3 +1,3 @@
-app.controller('MainController', ['$scope', function($scope) { 
+app.controller('MainController', ['$scope', function($scope) {
   $scope.title = 'Ticketing system'; 
 }]);

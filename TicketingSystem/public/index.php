@@ -10,12 +10,20 @@ require_once '../auth/Auth.php';
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
 // Check if user is logged-in
-$token = $_SERVER["HTTP_AUTHORIZATION"];
-$auth = new Auth($config);
-$user_id = $auth->isLoggedIn($token);
-if ($user_id == null) {
-    $login_page = LOGIN_PAGE;
-    header("Location: $login_page");
+$user_id = null;
+if (isset($_COOKIE["ticketingSystem"])) {
+    $token = $_COOKIE['ticketingSystem'];
+    if (!empty($token)) {
+        $pdo = new PDO("mysql:host=" . $config['db']['host'] . ";dbname=" . $config['db']['dbname'],
+            $config['db']['username'], $config['db']['password']);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $auth = new Auth($pdo);
+        $user_id = $auth->isLoggedIn($token);
+    }
+}
+if ($user_id === null) {
+    header("Location: " . LOGIN_PAGE);
     exit;
 }
 ?>
@@ -23,6 +31,7 @@ if ($user_id == null) {
 <html>
 <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controller/MainController.js"></script>
 </head>

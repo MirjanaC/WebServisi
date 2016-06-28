@@ -49,11 +49,17 @@ $app->add(function (ServerRequestInterface $request, ResponseInterface $response
     // Check if is requested api/login
     $path = $request->getUri()->getPath();
     $method = $request->getMethod();
+
+    $user_id = null;
     if (!($path == 'login' && $method == 'POST')) {
-        $token = $_SERVER["HTTP_AUTHORIZATION"];
-        $auth = new Auth($this->db);
-        $user_id = $auth->isLoggedIn($token);
-        if ($user_id == null) {
+        if (isset($_COOKIE["ticketingSystem"])) {
+            $token = $_COOKIE["ticketingSystem"];
+            if (!empty($token)) {
+                $auth = new Auth($this->db);
+                $user_id = $auth->isLoggedIn($token);
+            }
+        }
+        if ($user_id === null) {
             return $response->withStatus(401);
         }
     }
@@ -86,7 +92,7 @@ $app->post('/login', function (Request $request, Response $response) {
         $auth->logIn($token, $user['user_id']);
     }
 
-    $response = json_encode($token);
+    $response = $token;
     return $response;
 });
 
@@ -94,7 +100,7 @@ $app->post('/login', function (Request $request, Response $response) {
 $app->delete('/logout', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: DELETE /logout");
 
-    $token = $_SERVER["HTTP_AUTHORIZATION"];
+    $token = $_COOKIE["ticketingSystem"];
     $auth = new Auth($this->db);
     $auth->logOut($token);
 
