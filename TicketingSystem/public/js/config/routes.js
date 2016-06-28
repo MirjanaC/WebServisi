@@ -54,6 +54,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('editTask', {
 	    url:'/tasks/:task_id/edit',
 	    templateUrl: '../public/editTask.html'
+	 })
+	.state('findProject', {
+	    url:'/tasks/:project_id',
+	    templateUrl: '../public/tasks.html'
 	 });
 
 });

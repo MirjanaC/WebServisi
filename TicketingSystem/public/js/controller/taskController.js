@@ -1,11 +1,12 @@
-app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams', 
-	function($scope, $filter, $location, TaskFactory, $stateParams) {
+app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory', 
+	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory) {
 
 	$scope.find = function(){
 		TaskFactory.query(function(data) {
 			$scope.tasks = data;
 		});
 	};
+
 
 	$scope.datum1=new Date();
 	$scope.task = {};
@@ -48,6 +49,20 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
     };
 
     $scope.update = function(){
+  	 
+
+    	var task = new TaskFactory({
+
+			task_mark : $scope.task.mark,
+			task_title : $scope.task.name,
+			task_description : $scope.task.description,
+			task_userCreator : $scope.task.creator,
+			task_userAssigned : $scope.task.assigned,
+			task_creationDate : $scope.datum,
+			task_priority : $scope.task.priority,
+			task_status : $scope.task.status
+
+		});
   	 
       $scope.task.$update(function(){
       	

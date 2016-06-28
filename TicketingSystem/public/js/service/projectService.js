@@ -1,18 +1,4 @@
-app.factory('ProjectFactory', function($resource, $http) {
-
-/*
-	function addProject(project) {
-		return $http.post('/WebServisi/TicketingSystem/api/projects', project).then(function(response) {
-			return response.data;
-		});
-	}
-
-	return {
-
-		addProject : addProject
-
-	}
-*/
+app.factory('ProjectFactory', ['$resource', function($resource) {
 
 	return $resource('/WebServisi/TicketingSystem/api/projects/:project_id', {
             user_id: '@_id'
@@ -23,4 +9,4 @@ app.factory('ProjectFactory', function($resource, $http) {
         });
 	
 
-});
+}]);

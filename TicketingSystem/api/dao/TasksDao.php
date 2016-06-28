@@ -44,7 +44,7 @@ class TasksDao extends AbstractDao
                   task_priority = :task_priority,
                   task_status = :task_status,
                   user_id = :user_id,
-                  project_id = :project_id,
+                  project_id = :project_id
                 WHERE
                   task_id = :task_id
                ";

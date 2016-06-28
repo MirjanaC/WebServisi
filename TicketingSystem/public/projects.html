@@ -19,8 +19,8 @@
                 <tr ng-repeat="p in projects">
                     <td>{{ p.project_label }}</td>
                     <td>{{ p.project_name }}</td>
-                    <td><a class="btn text-center" href="#/tasks" data-brix_class="1467029462861">
-                                <i class="glyphicon glyphicon-option-vertical"></i>
+                    <td><a class="btn text-center" href="#/tasks/{{p.project_id}}" data-brix_class="1467029462861">
+                                <i class="glyphicon glyphicon-list"></i>
                         </a>
                     </td>
                     <td><a class="btn text-center" href="#/users" data-brix_class="1467029462861">
