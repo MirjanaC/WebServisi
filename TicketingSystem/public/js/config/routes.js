@@ -30,6 +30,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: '../public/createProject.html',
 		controller: 'projectCtrl'
 	})
+	.state('createtask', {
+		url: '/createtask',
+		templateUrl: '../public/createTask.html',
+		controller: 'taskCtrl'
+	})
 	.state('tasks', {
 		url: '/tasks',
 		templateUrl: '../public/tasks.html'

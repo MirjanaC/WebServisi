@@ -7,12 +7,14 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 		});
 	};
 
+	$scope.datum1=new Date();
 	$scope.task = {};
 
 	$scope.add = function () {
-		console.log("inside");
 
-		$scope.datum = $filter('date')($scope.task.creationDate, 'yyyy-MM-dd');
+		
+		$scope.datum = $filter('date')($scope.datum1, 'yyyy-MM-dd');
+	
 		console.log($scope.datum);
 
 		var task = new TaskFactory({
@@ -46,7 +48,9 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
     };
 
     $scope.update = function(){
+  	 
       $scope.task.$update(function(){
+      	
         $location.path('/tasks');
       }, function(errorResponse){
         $scope.error = errorResponse.data.message;
@@ -62,5 +66,6 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
       	});*/
       	TaskFactory.$delete({},{task_id:tid});
 	};
+
 
 }]);
