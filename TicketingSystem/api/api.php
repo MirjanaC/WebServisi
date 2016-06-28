@@ -110,6 +110,21 @@ $app->delete('/logout', function (Request $request, Response $response) {
 #####################################################################
 #                             USERS                                 #
 // Fetch all users
+$app->get('/logged_user', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /logged_user");
+
+    $token = $_COOKIE["ticketingSystem"];
+    $auth = new Auth($this->db);
+    $user_id = $auth->isLoggedIn($token);
+
+    $usersDao = new UsersDao($this->db);
+    $user = $usersDao->fetchById($user_id);
+    $response = json_encode($user);
+    return $response;
+});
+
+
+// Fetch all users
 $app->get('/users', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: GET /users");
 
