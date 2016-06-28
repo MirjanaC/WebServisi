@@ -63,3 +63,13 @@ CREATE TABLE Comments (
     FOREIGN KEY fk_user (user_id) REFERENCES Users(user_id),
     FOREIGN KEY fk_task (task_id) REFERENCES Tasks(task_id)
 );
+
+/*CREATE TABLE Teams2(
+  team_id INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(team_id),
+  team_name VARCHAR(20) NOT NULL DEFAULT 1
+) AS
+SELECT
+  user_name
+FROM
+  Users*/

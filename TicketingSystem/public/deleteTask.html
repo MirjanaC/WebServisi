@@ -1,8 +1,8 @@
 <section ng-controller="taskCtrl" ng-init="findOne()">
    <span data-brix_class="1466800402415">
-            Edit task<br>
+            Delete task<br>
    </span>
-     <form ng-submit="update()" novalidate>
+     
      <div>
             <div class="row" data-brix_class="1466801424887">
                 <div class="col-md-2" data-brix_class="1466801408662">
@@ -23,16 +23,16 @@
                     </span>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" name="name" data-brix_class="1466801214715" ng-model="task.task_name">
-                    <input class="form-control" name="description" data-brix_class="1466864718449" ng-model="task.task_description">
-                    <input class="form-control" data-brix_class="1466864797806">
-                    <select class="form-control" name="priority" data-brix_class="1466865092412"></select>
-                    <select class="form-control" name="status"></select>
+                    <input ng-model="task.task_title" class="form-control" name="name" data-brix_class="1466801214715">
+                    <input ng-model="task.task_description"class="form-control" name="description" data-brix_class="1466864718449">
+                    <input ng-model="task.task_creationDate" class="form-control" data-brix_class="1466864797806">
+                    <input ng-model="task.task_priority"class="form-control" name="description" data-brix_class="1466864718449">
+                    <input ng-model="task.task_status" class="form-control" data-brix_class="1466864797806" >
                 </div>
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-default" data-brix_class="1466801549135">Save&nbsp;</button>
+            <button type="button" ng-click="delete(task.task_id)" class="btn btn-default" data-brix_class="1466801549135">Delete&nbsp;</button>
         </div>
-        </form>
+        
 </section>

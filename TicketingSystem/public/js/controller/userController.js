@@ -1,5 +1,5 @@
 app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams', 
-	function($scope, UserFactory, $location,$stateParams) {
+	function($scope, UserFactory, $location, $stateParams) {
 
 	$scope.data = {};
 
@@ -34,13 +34,18 @@ app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams'
 	};
 
 	$scope.delete = function(user){
-     if (user) {
-           user.$remove(user);
-           $location.path('/users');
-          } else {
-            $scope.user.$remove(function(response) {
-              $location.path('/users');
-              });
+      if(user){
+        user.$remove(function(){
+          for(var i in $scope.users){
+            if($scope.users[i] === user){
+               $scope.users.splice(i,1);
+            }
+          }
+        });
+      } else {
+        $scope.user.$remove(function(){
+          $location.path('users/');
+        });
       }
     };
 
@@ -59,5 +64,6 @@ app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams'
         $scope.error = errorResponse.data.message;
       });
     };
+
 
 }]);

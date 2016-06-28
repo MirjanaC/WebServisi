@@ -1,10 +1,10 @@
-
+<section ng-controller = "taskCtrl" ng-init="find()">
         <span data-brix_class="1466800402415">
             List of tasks<br>
         </span>
      
     
-        <div ng-controller = "taskCtrl"> 
+        <div> 
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -13,6 +13,8 @@
                         <td>Task description</td>
                         <td>Task priority</td>
                         <td>Task status</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,8 +24,18 @@
                         <td>{{ t.task_description}}</td>
                         <td>{{ t.task_priority}}</td>
                         <td>{{ t.task_status}}</td>
-                    <tr>
+                        <td> <a class="btn text-center" href="#/tasks/{{t.task_id}}/edit" data-brix_class="1467029462861">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn" href="#/tasks/{{t.task_id}}/delete" data-brix_class="1467029527557">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
         </div>
+</section>

@@ -1,4 +1,4 @@
-<section ng-controller="projectCtrl" ng-init="findOne(); findUsers()">
+<section ng-controller="projectCtrl" ng-init=findOne()>
         <span data-brix_class="1466800402415">Edit project<br>
         </span>
         <form ng-submit="update()" novalidate>
@@ -13,9 +13,9 @@
                     </span>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" ng-model="project.project_name" class="form-control" data-brix_class="1466801214715">
-                       <select ng-model="project.users" ng-options="user.user_name for user in users" class="form-control" multiple="">
-                        <option data-ng-repeat="user in users" > 
+                    <input type="text" ng-model="project.project_name" class="form-control" name="name" data-brix_class="1466801214715">
+                    <select ng-model="project.users" class="form-control" multiple="">
+                         <option data-ng-repeat="user in users" > 
                             {{ user.user_name }} 
                         </option> 
                     </select>

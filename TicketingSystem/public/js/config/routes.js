@@ -34,6 +34,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/tasks',
 		templateUrl: '../public/tasks.html'
 	})
+	.state('createtask', {
+		url: '/createtask',
+		templateUrl: '../public/createTask.html'
+	})
 	.state('comments', {
 		url: '/comments',
 		templateUrl: '../public/comments.html'
@@ -46,9 +50,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    url:'/projects/:project_id/edit',
 	    templateUrl: '../public/editProject.html'
 	 })
-	.state('editTask', {
-	    url:'/tasks/:task_id/edit',
-	    templateUrl: '../public/editTask.html'
-	 });
+	.state('deletetask', {
+		url: '/tasks/:task_id/delete',
+		templateUrl: '../public/deleteTask.html'
+	});
 
 });
