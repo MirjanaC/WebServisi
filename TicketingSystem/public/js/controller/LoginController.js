@@ -1,7 +1,7 @@
 /**
  * Created by Zoran Luledzija on 26-Jun-16.
  */
-app.controller('LoginController', ['$scope', '$http', '$cookies', '$cookieStore', function($scope, $http, $cookies, $cookieStore) {
+app.controller('loginController', ['$scope', '$http', '$cookies', '$cookieStore', function($scope, $http, $cookies, $cookieStore) {
     $scope.user_email;
     $scope.user_password;
     $scope.login = function(){

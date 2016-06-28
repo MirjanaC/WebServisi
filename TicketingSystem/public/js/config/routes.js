@@ -4,10 +4,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 
-	.state('home', {
-		url: '/',
-		templateUrl: '../public/login.html'
-	})
 	.state('dashboard', {
 		url: '/dashboard',
 		templateUrl: '../public/index.php'

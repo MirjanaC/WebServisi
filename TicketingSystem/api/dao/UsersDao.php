@@ -84,11 +84,14 @@ class UsersDao extends AbstractDao
         }
     }
 
-    public function fetchNamesOfUsersWorkingOnProject($id) {
-
-    }
-
-    public function fetchTasksOnProject($id) {
-
+    public function authenticate($email, $password) {
+        $user = null;
+        $sql = "SELECT * FROM users WHERE user_email = :user_email AND user_password = :user_password";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["user_email" => $email, "user_password" => $password]);
+        if($result) {
+            $user = $stmt->fetch();
+        }
+        return $user;
     }
 }

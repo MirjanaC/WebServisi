@@ -37,6 +37,12 @@ $config = array(
     Creating constants for heavily used paths makes things a lot easier.
     ex. require_once(LIBRARY_PATH . "Paginator.php")
 */
+defined("INDEX_PAGE")
+or define("INDEX_PAGE",'/WebServisi/TicketingSystem/public/index.php');
+
+defined("LOGIN_PAGE")
+or define("LOGIN_PAGE",'/WebServisi/TicketingSystem/public/login.php');
+
 defined("LIBRARY_PATH")
 or define("LIBRARY_PATH", realpath(dirname(__FILE__) . '/library'));
 

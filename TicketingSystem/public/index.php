@@ -8,6 +8,7 @@
 
 // load up your config file
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
+require_once '../auth/Auth.php';
 
 // Check if user is logged-in
 $user_id = null;
@@ -30,6 +31,7 @@ if ($user_id === null) {
 <html>
 <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
     <!-- node modules -->
     <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>

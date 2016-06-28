@@ -13,6 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 require '../vendor/autoload.php';
 require '../resources/config.php';
+require_once '../auth/Auth.php';
 
 spl_autoload_register(function ($classname) {
     require ("dao/" . $classname . ".php");
