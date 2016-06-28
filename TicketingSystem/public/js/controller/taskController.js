@@ -45,6 +45,14 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
       });
     };
 
+    $scope.update = function(){
+      $scope.task.$update(function(){
+        $location.path('/tasks');
+      }, function(errorResponse){
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
 	$scope.delete = function(tid) {
 		console.log("Deleted: " + tid);
 		/*$scope.task.$delete(function(response) {
