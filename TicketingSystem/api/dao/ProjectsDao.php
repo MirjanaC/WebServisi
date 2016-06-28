@@ -18,6 +18,24 @@ class ProjectsDao extends AbstractDao
         return $results;
     }
 
+    public function fetchNamesOfUsersWorkingOnProject($id) {
+        $sql = "SELECT projects.project_name, users.user_name FROM projects LEFT JOIN users ON projects.project_id = users.project_id WHERE projects.project_id = :project_id";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["project_id" => $id]);
+        if($result) {
+            return $stmt->fetch();
+        }
+    }
+
+    public function fetchTasksOnProject($id) {
+        $sql = "SELECT projects.project_name, tasks.task_title FROM projects LEFT JOIN tasks ON projects.task_id = tasks.task_id WHERE projects.project_id = :project_id";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["project_id" => $id]);
+        if($result) {
+            return $stmt->fetch();
+        }
+    }
+
     public function fetchById($id) {
         $sql = "SELECT * FROM projects WHERE project_id = :project_id";
         $stmt = $this->db->prepare($sql);

@@ -163,6 +163,28 @@ $app->get('/projects', function (Request $request, Response $response) {
     return $response;
 });
 
+// Fetching users working on project 
+$app->get('/projectsUsername/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /projectsUsername/{id}");
+    $id = $request->getAttribute('id');
+
+    $projectsDao = new ProjectsDao($this->db);
+    $projects = $projectsDao->fetchNamesOfUsersWorkingOnProject($id);
+    $response = json_encode($projects);
+    return $response;
+});
+
+//
+$app->get('/projectsTasks/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /projectsTasks/{id}");
+    $id = $request->getAttribute('id');
+
+    $projectsDao = new ProjectsDao($this->db);
+    $projects = $projectsDao->fetchTasksOnProject($id);
+    $response = json_encode($projects);
+    return $response;
+});
+
 // Fetch project by ID
 $app->get('/projects/{id}', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: GET /projects/{id}");

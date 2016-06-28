@@ -58,6 +58,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('findProject', {
 	    url:'/tasks/:project_id',
 	    templateUrl: '../public/tasks.html'
-	 });
+	 })
+	.state('getUsernames', {
+		url: '/projectsUsername/:project_id',
+		templateUrl: '../public/projectsUsers.html'
+	})
+	.state('getTasks', {
+		url: '/projectsTasks/:project_id',
+		templateUrl: '../public/projectsTasks.html'
+	});
 
 });

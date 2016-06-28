@@ -24,4 +24,8 @@ abstract class AbstractDao {
     public abstract function update($data);
 
     public abstract function delete($id);
+
+    public abstract function fetchNamesOfUsersWorkingOnProject($id);
+
+    public abstract function fetchTasksOnProject($id);
 }

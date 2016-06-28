@@ -1,0 +1,21 @@
+<section>        
+    <span data-brix_class="1466800402415">
+        List of tasks<br>
+    </span>
+    
+    <div ng-controller = "projectCtrl" ng-init="getTasks()">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project name</th>
+                    <th>Tasks available</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ projName }}</td>
+                    <td><a href=""></a>{{ taskTitle }}</td>
+                </tr>
+            </tbody></table>
+    </div>
+</section>

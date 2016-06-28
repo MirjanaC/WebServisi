@@ -77,5 +77,45 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
       });
     };
 
+    $scope.projectName = {};
+    $scope.userName = {};
+
+    $scope.getUsers = function() {
+      console.log("Ok, bar udje ovde.");
+      
+      // main part //
+      ProjectFactory.getData({project_id: $stateParams.project_id}, function(data){
+        $scope.projectName = data.project_name;
+        $scope.userName = data.user_name;
+
+        console.log("Data1: " + angular.toJson($scope.projectName) + ", Data2: " + angular.toJson($scope.userName));
+
+        if($scope.userName == null) {
+          $scope.userName = "User not assigned.";
+        }
+      });
+      
+    };
+
+    $scope.projName = {};
+    $scope.taskTitle = {};
+
+    $scope.getTasks = function() {
+      console.log("Ok, bar udje ovde.");
+      
+      // main part //
+      ProjectFactory.getTaskData({project_id: $stateParams.project_id}, function(data){
+        $scope.projName = data.project_name;
+        $scope.taskTitle = data.task_title;
+
+        console.log("Data1: " + angular.toJson($scope.projName) + ", Data2: " + angular.toJson($scope.taskTitle));
+
+        if($scope.taskTitle == null) {
+          $scope.taskTitle = "Tasks not assigned.";
+        }
+      });
+      
+    };
+
 
 }]);

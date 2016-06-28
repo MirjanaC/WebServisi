@@ -83,4 +83,12 @@ class UsersDao extends AbstractDao
             throw new Exception("could not save record");
         }
     }
+
+    public function fetchNamesOfUsersWorkingOnProject($id) {
+
+    }
+
+    public function fetchTasksOnProject($id) {
+
+    }
 }

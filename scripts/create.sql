@@ -12,7 +12,9 @@ CREATE TABLE Users (
 	user_email VARCHAR(40) NOT NULL,
 	user_password VARCHAR(20)NOT NULL,
 	user_role VARCHAR(10) NOT NULL,
-	PRIMARY KEY (user_id)
+	project_id INT,
+	PRIMARY KEY (user_id),
+	FOREIGN KEY fk_project (project_id) REFERENCES Projects(project_id)
 );
 
 CREATE TABLE Teams (
@@ -29,8 +31,10 @@ CREATE TABLE Projects (
 	project_id INT NOT NULL AUTO_INCREMENT,
 	project_name VARCHAR(20) NOT NULL,
     user_id INT,
+    task_id INT,
 	PRIMARY KEY (project_id),
-    FOREIGN KEY fk_user (user_id) REFERENCES Users(user_id)
+    FOREIGN KEY fk_user (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY fk_task (task_id) REFERENCES Tasks(task_id)
 );
 
 CREATE TABLE Tasks (

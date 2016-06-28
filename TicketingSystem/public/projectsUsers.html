@@ -1,0 +1,21 @@
+<section>        
+    <span data-brix_class="1466800402415">
+        List of projects<br>
+    </span>
+    
+    <div ng-controller = "projectCtrl" ng-init="getUsers()">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project name</th>
+                    <th>Users assigned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ projectName }}</td>
+                    <td>{{ userName }}</td>
+                </tr>
+            </tbody></table>
+    </div>
+</section>
