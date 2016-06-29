@@ -1,5 +1,5 @@
-app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory','$window', 
-	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory, $window) {
+app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory','$window','UserFactory', 
+	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory, $window, UserFactory) {
 
 	$scope.find = function(){
 		TaskFactory.query(function(data) {
@@ -21,8 +21,8 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 			task_mark : $scope.task.mark,
 			task_title : $scope.task.name,
 			task_description : $scope.task.description,
-			task_userCreator : $scope.task.creator,
-			task_userAssigned : $scope.task.assigned,
+			task_userCreator : $scope.loggedUser,
+			/*task_userAssigned : $scope.task.assigned,*/
 			task_creationDate : $scope.datum,
 			task_priority : $scope.task.priority,
 			task_status : $scope.task.status
@@ -105,10 +105,19 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 	};
 
 	$scope.getLoggedUser = function(){
-        TaskFactory.getLogged(function(data){
+        UserFactory.getLogged(function(data){
           $scope.loggedUser = data;
         });
     };    
+
+    $scope.findUsers = function() {
+          UserFactory.query(function(data){
+            $scope.users = data;
+          
+          }, function(errorResponse){
+          	console.log(errorResponse)
+          });
+      };
 	
 
 }]);

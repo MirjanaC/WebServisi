@@ -1,9 +1,9 @@
-<section ng-controller="userCtrl">
+<section ng-controller="userCtrl" ng-init="getLoggedUser()">
         <span data-brix_class="1466800402415">
             Create new user<br>
         </span>
     <form name="userForm" ng-submit="add(userForm.$valid)" novalidate>
-        <div>
+        <div ng-show="loggedUser.user_role=='admin'">
             <div class="row" data-brix_class="1466801424887">
                 <div class="col-md-2" data-brix_class="1466801408662">
                     <span class="col-md-8" data-brix_class="1466800797345">Name</span>

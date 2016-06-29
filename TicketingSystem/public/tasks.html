@@ -33,7 +33,7 @@
                  </a>
                  </div>
         </div>
-        <div ng-show="tasks.length>0" ng-show="loggedUser.user_role=='admin'"> 
+        <div ng-show="tasks.length>0"> 
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -47,7 +47,7 @@
                         <td>Delete</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ng-show="loggedUser.user_role=='admin'">
                     <tr ng-repeat="t in tasks | filter: priorityFilter | orderBy : 't.task_creationDate'">
                         <td>{{ t.task_title}}</td>
                         <td>{{ t.task_creationDate}}</td>
@@ -70,11 +70,25 @@
                         </td>
                     </tr>
                 </tbody>
+                <tbody ng-show="loggedUser.user_role=='user'">
+                    <tr ng-repeat="t in tasks | filter: priorityFilter | orderBy : 't.task_creationDate'">
+                        <td>{{ t.task_title}}</td>
+                        <td>{{ t.task_creationDate}}</td>
+                        <td>{{ t.task_description}}</td>
+                        <td>{{ t.task_priority}}</td>
+                        <td>{{ t.task_status}}</td>
+                        </td>
+                        <td><a class="btn text-center" href="#/comments" data-brix_class="1467029462861">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-            <div>
+            <div ng-show="loggedUser.user_role=='admin'">
                 <a class="btn" href="#/createtask" data-brix_class="1467029527557"> 
                     <i class="glyphicon glyphicon-plus"></i>
-                 </a>
-                 </div>
+                </a>
+            </div>
         </div>
 </section>
