@@ -109,7 +109,7 @@ $app->delete('/logout', function (Request $request, Response $response) {
 
 #####################################################################
 #                             USERS                                 #
-// Fetch all users
+// Fetch logged user
 $app->get('/logged_user', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: GET /logged_user");
 
