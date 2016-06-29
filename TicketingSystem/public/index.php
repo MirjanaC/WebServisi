@@ -38,11 +38,13 @@ if ($user_id === null) {
 
     <script type="text/javascript" src="js/app.js"></script>
     <!-- services -->
+    <script type="text/javascript" src="js/service/headerService.js"></script>
     <script type="text/javascript" src="js/service/userService.js"></script>
     <script type="text/javascript" src="js/service/projectService.js"></script>
     <script type="text/javascript" src="js/service/taskService.js"></script>
 
     <!-- controllers -->
+    <script type="text/javascript" src="js/controller/headerController.js"></script>
     <script type="text/javascript" src="js/controller/userController.js"></script>
     <script type="text/javascript" src="js/controller/projectController.js"></script>
     <script type="text/javascript" src="js/controller/taskController.js"></script>
