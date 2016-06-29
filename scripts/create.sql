@@ -34,7 +34,7 @@ CREATE TABLE TeamUsers (
 CREATE TABLE Projects (
 	project_id INT NOT NULL AUTO_INCREMENT,
 	project_name VARCHAR(20) NOT NULL,
-	project_oznaka VARCHAR(5) NOT NULL,
+	project_code VARCHAR(5) NOT NULL,
     	team_id INT,
 	PRIMARY KEY (project_id),
     	FOREIGN KEY fk_team (team_id) REFERENCES Teams(team_id)
