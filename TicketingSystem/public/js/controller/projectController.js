@@ -24,26 +24,24 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
 
 	 $scope.add = function() {
     			
-		 angular.forEach($scope.project.users, function(u) {
-		 	  console.log("fsfsd");
-			$scope.us = u.user_id;
+		 var spliting = $scope.project.name.split(' ');
+      val1 = spliting[0];
+      val2 = spliting[1];
 
-			var send = new ProjectFactory({
+      send = new ProjectFactory({
+        project_name : $scope.project.name,
+        project_code : "PR-"+val2,
+        team_id : $scope.project.teams.team_id
 
-			project_name : $scope.project.name,
-			user_id : $scope.us
+      });
 
-			});
+      console.log("SEND: " + angular.toJson(send));
 
-			console.log("SEND: " + angular.toJson(send));
-
-			send.$save(function(response) {
-				$location.path('/projects');
-			}, function(error) {
-				$scope.error = error.data.message;
-			});
-
-		});
+     send.$save(function(response) {
+        $location.path('/projects');
+      }, function(error) {
+        $scope.error = error.data.message;
+      });
 	};
 
 	$scope.find = function(){
@@ -77,10 +75,7 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
 
     $scope.projectName = {};
     $scope.userName = {};
-
     $scope.getUsers = function() {
-      
-      // main part //
       ProjectFactory.getData({project_id: $stateParams.project_id}, function(data){
         $scope.projectName = data.project_name;
         $scope.userName = data.user_name;
@@ -96,14 +91,12 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
 
     $scope.projName = {};
     $scope.taskTitle = {};
-
+    $scope.taskId = {};
     $scope.getTasks = function() {
-     
-      
-      // main part //
       ProjectFactory.getTaskData({project_id: $stateParams.project_id}, function(data){
         $scope.projName = data.project_name;
         $scope.taskTitle = data.task_title;
+        $scope.taskId = data.task_id;
 
         console.log("Data1: " + angular.toJson($scope.projName) + ", Data2: " + angular.toJson($scope.taskTitle));
 

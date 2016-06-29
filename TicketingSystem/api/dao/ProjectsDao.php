@@ -32,7 +32,10 @@ class ProjectsDao extends AbstractDao
     }
 
     public function fetchTasksOnProject($id) {
-        $sql = "SELECT projects.project_name, tasks.task_title FROM projects LEFT JOIN tasks ON projects.task_id = tasks.task_id WHERE projects.project_id = :project_id";
+        $sql = "SELECT tasks.task_title, tasks.task_id, projects.project_name
+                FROM tasks
+                JOIN projects ON tasks.project_id = projects.project_id
+                WHERE projects.project_id = :project_id";
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute(["project_id" => $id]);
         if($result) {

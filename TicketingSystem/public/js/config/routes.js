@@ -62,5 +62,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('getTasks', {
 		url: '/projectsTasks/:project_id',
 		templateUrl: '../public/projectsTasks.html'
+	})
+	.state('reports', {
+		url: '/reports/:project_id',
+		templateUrl: '../public/reports.html'
+	})
+	.state('taskReport', {
+		url: '/taskReport/:project_id',
+		templateUrl: '../public/taskReport.html'
 	});
 });
