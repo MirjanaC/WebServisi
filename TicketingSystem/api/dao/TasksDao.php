@@ -38,12 +38,9 @@ class TasksDao extends AbstractDao
                   task_mark = :task_mark,
                   task_title = :task_title,
                   task_creationDate = :task_creationDate,
-                  task_userCreator = :task_userCreator,
-                  task_userAssigned = :task_userAssigned,
                   task_description = :task_description,
                   task_priority = :task_priority,
                   task_status = :task_status,
-                  user_id = :user_id,
                   project_id = :project_id
                 WHERE
                   task_id = :task_id
@@ -53,12 +50,9 @@ class TasksDao extends AbstractDao
             "task_mark" => $task['task_mark'],
             "task_title" => $task['task_title'],
             "task_creationDate" => $task['task_creationDate'],
-            "task_userCreator" => $task['task_userCreator'],
-            "task_userAssigned" => $task['task_userAssigned'],
             "task_description" => $task['task_description'],
             "task_priority" => $task['task_priority'],
             "task_status" => $task['task_status'],
-            "user_id" => $task['user_id'],
             "project_id" => $task['project_id'],
             "task_id" => $task['task_id']
         ]);
@@ -72,23 +66,17 @@ class TasksDao extends AbstractDao
                   task_mark,
                   task_title,
                   task_creationDate,
-                  task_userCreator,
-                  task_userAssigned,
                   task_description,
                   task_priority,
                   task_status,
-                  user_id,
                   project_id)
                 VALUES (
                   :task_mark,
                   :task_title,
                   :task_creationDate,
-                  :task_userCreator,
-                  :task_userAssigned,
                   :task_description,
                   :task_priority,
                   :task_status,
-                  :user_id,
                   :project_id
                 )";
         $stmt = $this->db->prepare($sql);
@@ -96,12 +84,9 @@ class TasksDao extends AbstractDao
             "task_mark" => $task['task_mark'],
             "task_title" => $task['task_title'],
             "task_creationDate" => $task['task_creationDate'],
-            "task_userCreator" => $task['task_userCreator'],
-            "task_userAssigned" => $task['task_userAssigned'],
             "task_description" => $task['task_description'],
             "task_priority" => $task['task_priority'],
             "task_status" => $task['task_status'],
-            "user_id" => $task['user_id'],
             "project_id" => $task['project_id']
         ]);
         if(!$result) {
