@@ -34,7 +34,6 @@ if ($user_id !== null) {
         <title>Login</title>
         <!-- Bootstrap core CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet" data-mbcode_theme="true">
 
         <!-- Custom styles for this template -->
         <link href="css/signin.css" rel="stylesheet">
@@ -48,6 +47,9 @@ if ($user_id !== null) {
                 <input type="password" ng-model="user_password" class="form-control text-left" placeholder="Password" required="" data-brix_class="1466797887560">
                 <button ng-click="login()" class="btn btn-lg btn-primary btn-block" type="submit" data-brix_class="1466797946433">Sign in</button>
             </form>
+            <div align="center">
+                <p>Dont have account? <a href="/WebServisi/TicketingSystem/public/register.php">Register now</a></p>
+            </div>
         </div>
 
         <!-- Placed at the end of the document so the pages load faster -->

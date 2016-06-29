@@ -1,4 +1,4 @@
-<section ng-controller="taskCtrl" ng-init="findOne()">
+<section ng-controller="taskCtrl" ng-init="findOne(); getLoggedUser()">
    <span data-brix_class="1466800402415">
             Edit task<br>
    </span>
@@ -28,6 +28,14 @@
                         <option value="Major">Major</option>
                         <option value="Minor">Minor</option>
                         <option value="Trivial">Trivial</option>
+                    <input ng-model="task.task_title" class="form-control" name="name" data-brix_class="1466801214715" ng-disabled="loggedUser.user_role==admin">
+                    <input ng-model="task.task_description" class="form-control" name="description" data-brix_class="1466864718449" ng-model="task.task_description">
+                    <select ng-model="task.task_priority" class="form-control" name="priority" data-brix_class="1466865092412">
+                        <option value="blocker">Blocker</option>
+                        <option value="critical">Critical</option>
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="trivial">Trivial</option>
                     </select>
                     <select ng-model="task.task_status" class="form-control" data-brix_class="1466865092412">
                         <option value="To do">To do</option>

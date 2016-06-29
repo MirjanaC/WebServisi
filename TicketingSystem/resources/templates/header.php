@@ -5,8 +5,8 @@
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" ng-show = "loggedUser.user_role=='admin'">
-            <a span="" data-toggle="dropdown" href="#" data-brix_class="1466802392777" name="settings">Settings&nbsp;<span class="caret"></span></a>
+        <li class="dropdown">
+            <a span="" data-toggle="dropdown" data-brix_class="1466802392777" name="settings">Settings&nbsp;<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#/projects">Projects</a></li>
                 <li><a href="#/users">Users</a></li>
