@@ -28,6 +28,16 @@ class CommentsDao extends AbstractDao
         }
     }
 
+    public function getUser($id) {
+        $sql = "SELECT user_name FROM users 
+                WHERE  user_id=: user_id";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["user_id" => $id]);
+        if($result) {
+            return $stmt->fetch();
+        }
+    }
+
     public function delete($id) {
         $sql = "DELETE FROM comments WHERE comment_id = :comment_id";
         $stmt = $this->db->prepare($sql);
@@ -62,13 +72,11 @@ class CommentsDao extends AbstractDao
         $sql = "INSERT INTO comments (
                   comment_creationDate,
                   comment_text,
-                  comment_userCreator,
                   user_id,
                   task_id)
                 VALUES (
                   :comment_creationDate,
                   :comment_text,
-                  :comment_userCreator,
                   :user_id,
                   :task_id
                 )";
@@ -76,7 +84,6 @@ class CommentsDao extends AbstractDao
         $result = $stmt->execute([
             "comment_creationDate" => $comment['comment_creationDate'],
             "comment_text" => $comment['comment_text'],
-            "comment_userCreator" => $comment['comment_userCreator'],
             "user_id" => $comment['user_id'],
             "task_id" => $comment['task_id']
         ]);

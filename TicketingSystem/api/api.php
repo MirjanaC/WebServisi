@@ -145,6 +145,7 @@ $app->get('/users/{id}', function (Request $request, Response $response) {
     return $response;
 });
 
+
 // Delete user by ID
 $app->delete('/users/{id}', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: DELETE /users/{id}");
@@ -315,6 +316,17 @@ $app->get('/projectsUsername/{id}', function (Request $request, Response $respon
     return $response;
 });
 
+// Fetching projects of users 
+$app->get('/userProjects/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /userProjects/{id}");
+    $id = $request->getAttribute('id');
+
+    $projectsDao = new ProjectsDao($this->db);
+    $projects = $projectsDao->fetchProjectsOfUser($id);
+    $response = json_encode($projects);
+    return $response;
+});
+
 //
 $app->get('/projectsTasks/{id}', function (Request $request, Response $response) {
     $this->logger->addInfo("Method: GET /projectsTasks/{id}");
@@ -386,6 +398,17 @@ $app->get('/comments/{id}', function (Request $request, Response $response) {
 
     $commentsDao = new CommentsDao($this->db);
     $comment = $commentsDao->fetchById($id);
+    $response = json_encode($comment);
+    return $response;
+});
+
+// Fetch username by ID
+$app->get('/comments/user/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /comments/{id}");
+    $id = $request->getAttribute('id');
+
+    $commentsDao = new CommentsDao($this->db);
+    $user = $commentsDao->getUser($id);
     $response = json_encode($comment);
     return $response;
 });

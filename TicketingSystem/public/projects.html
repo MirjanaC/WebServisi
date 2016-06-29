@@ -3,7 +3,7 @@
         List of projects<br>
     </span>
     
-    <div ng-controller = "projectCtrl" ng-init="find(); getLoggedUser()">
+    <div ng-controller = "projectCtrl" ng-init="find(); getLoggedUser() ">
         <table class="table" ng-show = "loggedUser.user_role=='admin'">
             <thead>
                 <tr>
@@ -15,9 +15,9 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <tr ng-repeat="p in projects">
-                    <td>{{ p.project_label }}</td>
+                    <td>{{ p.project_code }}</td>
                     <td>{{ p.project_name }}</td>
                     <td><a class="btn text-center" href="#/projectsTasks/{{p.project_id}}" data-brix_class="1467029462861">
                                 <i class="glyphicon glyphicon-list"></i>
@@ -49,10 +49,11 @@
                     <th>Users on project</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-repeat="p in projects">
-                    <td>{{ p.project_label }}</td>
-                    <td>{{ p.project_name }}</td>
+            <tbody  >
+               
+                <tr ng-repeat="pr in projects" ng-show="pr.project_id==userProjects.project_id">
+                    <td>{{ pr.project_code}}</td>
+                    <td>{{ pr.project_name }}</td>
                     <td><a class="btn text-center" href="#/projectsTasks/{{p.project_id}}" data-brix_class="1467029462861">
                                 <i class="glyphicon glyphicon-list"></i>
                         </a>

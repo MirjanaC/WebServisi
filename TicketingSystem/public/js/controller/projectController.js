@@ -11,6 +11,7 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
           });
       };
 
+
   $scope.getLoggedUser = function(){
         UserFactory.getLogged(function(data){
           $scope.loggedUser = data;
@@ -113,5 +114,11 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
       
     };
 
-
+    $scope.userProjects = ProjectFactory.getUserProjects({ 
+          user_id : 3},
+          function(data){
+       
+      });
+        console.log($scope.userProjects);
+    
 }]);

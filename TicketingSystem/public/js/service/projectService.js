@@ -13,6 +13,10 @@ app.factory('ProjectFactory', ['$resource', function($resource) {
                 url: '/WebServisi/TicketingSystem/api/projectsTasks/:project_id',
                 method: 'GET',
                 isArray: false
+            },
+             getUserProjects: {
+                url: '/WebServisi/TicketingSystem/api/userProjects/:user_id',
+                method: 'GET'
             }
         });
 	

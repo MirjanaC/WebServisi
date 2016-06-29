@@ -63,5 +63,4 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/projectsTasks/:project_id',
 		templateUrl: '../public/projectsTasks.html'
 	});
-
 });
