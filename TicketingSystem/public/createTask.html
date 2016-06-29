@@ -1,4 +1,4 @@
-<section ng-controller="taskCtrl" ng-init="findUsers()">
+<section ng-controller="taskCtrl" ng-init="findUsers(); findProjects()">
    <span data-brix_class="1466800402415">
             Create new task<br>
    </span>
@@ -6,43 +6,52 @@
             <div class="row" data-brix_class="1466801424887">
                 <div class="col-md-2" data-brix_class="1466801408662">
                     <span class="col-md-8" name="name" data-brix_class="1466800797345">
-                        Name
+                        Title
                     </span>
                     <span class="col-md-8" data-brix_class="1466864519857">
                         Description
                     </span>
-                    <span class="col-md-8" data-brix_class="1466864519857">
-                        Assigned
-                    </span>
+                    <!--<span class="col-md-8" data-brix_class="1466864519857">
+                        Assigned to
+                    </span>-->
                     <span class="col-md-8" data-brix_class="1466864862360">
                         Priority
                     </span>
                     <span class="col-md-8" data-brix_class="1466864900359">
                         Status
                     </span>
+                    <span class="col-md-8" data-brix_class="1466864519857">
+                        For project
+                    </span>
                 </div>
                 <div class="col-md-6">
-                    <input ng-model="task.name" class="form-control" name="name" placeholder="Task name" data-brix_class="1466801214715">
+                    <input ng-model="task.title" class="form-control" name="name" placeholder="Task title" data-brix_class="1466801214715">
                     <input ng-model="task.description" class="form-control" name="description" placeholder="Task description" data-brix_class="1466864718449">
-                    <select ng-model="task.users" class="form-control" multiple="">
+                    <!--<select ng-model="task.users" class="form-control" multiple="">
                         <option data-ng-repeat="user in users" > 
                             {{ user.user_name }} 
                         </option> 
-                    </select>
+                    </select> -->
                     <select ng-model="task.priority" class="form-control" name="priority" data-brix_class="1466865092412">
                         <option value="">Select task priority</option>
-                        <option value="blocker">Blocker</option>
-                        <option value="critical">Critical</option>
-                        <option value="major">Major</option>
-                        <option value="minor">Minor</option>
-                        <option value="trivial">Trivial</option>
+                        <option value="Blocker">Blocker</option>
+                        <option value="Critical">Critical</option>
+                        <option value="Major">Major</option>
+                        <option value="Minor">Minor</option>
+                        <option value="Trivial">Trivial</option>
                     </select>
                     <select ng-model="task.status" class="form-control" name="status">
                         <option value="">Select task status</option>
-                        <option value="todo">To do</option>
-                        <option value="inprogress">In progress</option>
-                        <option value="verify">Verify</option>
-                        <option value="done">Done</option>
+                        <option value="To do">To do</option>
+                        <option value="In progress">In progress</option>
+                        <option value="Verify">Verify</option>
+                        <option value="Done">Done</option>
+                    </select>
+                    <select ng-model="task.projects" ng-options="project.project_name for project in projects" class="form-control">
+                        <option value="">Select project</option>
+                        <!--<option data-ng-repeat="project in projects" > 
+                            {{ project.project_name }} 
+                        </option> -->
                     </select>
                 </div>
             </div>

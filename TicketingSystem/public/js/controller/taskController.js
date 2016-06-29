@@ -1,5 +1,5 @@
 app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory','$window','UserFactory', 
-	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory, $window, UserFactory) {
+	function($scope, $filter, $location, TaskFactory, $stateParams, ProjectFactory, $window, UserFactory) {
 
 	$scope.find = function(){
 		TaskFactory.query(function(data) {
@@ -7,35 +7,38 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 		});
 	};
 
-
-	$scope.datum1=new Date();
 	$scope.task = {};
 
-	$scope.add = function () {
+	$scope.datum1=new Date();
 
+	$scope.add = function () {
 		
 		$scope.datum = $filter('date')($scope.datum1, 'yyyy-MM-dd');
 
 		var task = new TaskFactory({
-
-			task_mark : $scope.task.mark,
-			task_title : $scope.task.name,
-			task_description : $scope.task.description,
-			task_userCreator : $scope.loggedUser,
-			/*task_userAssigned : $scope.task.assigned,*/
+			task_mark : $scope.task.projects.project_name+"-"+$scope.task.projects.project_id,
+			task_title : $scope.task.title,
 			task_creationDate : $scope.datum,
+			task_description : $scope.task.description,
 			task_priority : $scope.task.priority,
-			task_status : $scope.task.status
-
+			task_status : $scope.task.status,
+			project_id : $scope.task.projects.project_id
 		});
+
+		/*var task_user = new TaskFactory({
+			task_id : $scope.
+			task_creator: 'C',
+			user_id :
+		});*/
 
 		console.log("TASK: " + angular.toJson(task));
 
 		task.$save(function(response) {
 			$location.path('/tasks');
-		}, function(error) {
-			$scope.error = error.data.message;
+		}, function(errorResponse) {
+			$scope.error = errorResponse.data.message;
 		});
+
 	};
 
 	$scope.findOne = function() {
@@ -51,14 +54,11 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 
     	var task = new TaskFactory({
 
-			task_mark : $scope.task.mark,
-			task_title : $scope.task.name,
-			task_description : $scope.task.description,
-			task_userCreator : $scope.task.creator,
-			task_userAssigned : $scope.task.assigned,
+			task_title : $scope.task.task_title,
+			task_description : $scope.task.task_description,
 			task_creationDate : $scope.datum,
-			task_priority : $scope.task.priority,
-			task_status : $scope.task.status
+			task_priority : $scope.task.task_priority,
+			task_status : $scope.task.task_status
 
 		});
   	 
@@ -119,5 +119,13 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
           });
       };
 	
+	$scope.findProjects = function() {
+        ProjectFactory.query(function(data){
+           $scope.projects = data;
+          
+        }, function(errorResponse){
+          console.log(errorResponse)
+        });
+    };
 
 }]);

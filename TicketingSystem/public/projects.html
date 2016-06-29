@@ -7,17 +7,16 @@
         <table class="table" ng-show = "loggedUser.user_role=='admin'">
             <thead>
                 <tr>
-                    <th>Label</th>
                     <th>Name</th>
                     <th>Tasks</th>
                     <th>Users on project</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    <th>Reports</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="p in projects">
-                    <td>{{ p.project_label }}</td>
                     <td>{{ p.project_name }}</td>
                     <td><a class="btn text-center" href="#/projectsTasks/{{p.project_id}}" data-brix_class="1467029462861">
                                 <i class="glyphicon glyphicon-list"></i>
@@ -36,6 +35,11 @@
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </td>
+                    <td>
+                        <a class="btn text-center" href="#/reports/{{p.project_id}}" data-brix_class="1467029527557">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
             </table>
@@ -43,7 +47,6 @@
               <table class="table" ng-show = "loggedUser.user_role=='user'">
             <thead>
                 <tr>
-                    <th>Label</th>
                     <th>Name</th>
                     <th>Tasks</th>
                     <th>Users on project</th>
@@ -53,7 +56,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="p in projects">
-                    <td>{{ p.project_label }}</td>
                     <td>{{ p.project_name }}</td>
                     <td><a class="btn text-center" href="#/projectsTasks/{{p.project_id}}" data-brix_class="1467029462861">
                                 <i class="glyphicon glyphicon-list"></i>

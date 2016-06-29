@@ -35,6 +35,8 @@ if ($user_id === null) {
     <!-- node modules -->
     <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="node_modules/chart.js/Chart.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
     <script type="text/javascript" src="js/app.js"></script>
     <!-- services -->
@@ -42,19 +44,23 @@ if ($user_id === null) {
     <script type="text/javascript" src="js/service/userService.js"></script>
     <script type="text/javascript" src="js/service/projectService.js"></script>
     <script type="text/javascript" src="js/service/taskService.js"></script>
+    <script type="text/javascript" src="js/service/reportService.js"></script>
 
     <!-- controllers -->
     <script type="text/javascript" src="js/controller/headerController.js"></script>
     <script type="text/javascript" src="js/controller/userController.js"></script>
     <script type="text/javascript" src="js/controller/projectController.js"></script>
     <script type="text/javascript" src="js/controller/taskController.js"></script>
+    <script type="text/javascript" src="js/controller/reportController.js"></script>
 
-     <!-- node modules -->
+     <!-- routes -->
     <script type="text/javascript" src="js/config/routes.js"></script>
 
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="node_modules/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet">
     
                     
     <!-- User -->

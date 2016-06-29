@@ -8,11 +8,27 @@
             <thead>
                 <tr>
                     <th>Tasks available</th>
+                    <th>Preview</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><a href=""></a>{{ taskTitle }}</td>
+                    <td>{{ taskTitle }}</td>
+                    <td><a class="btn text-center" href="#/preview" data-brix_class="1467029462861">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                    </td>
+                    <td><a class="btn text-center" href="#/tasks/{{taskId}}/edit" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn" ng-click="delete(t.task_id)" data-brix_class="1467029527557">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody></table>
             <div>

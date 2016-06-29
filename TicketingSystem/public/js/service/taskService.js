@@ -9,5 +9,4 @@ app.factory('TaskFactory', ['$resource',
                 method: 'PUT'
             }
         });
-
 }]);
