@@ -1,5 +1,5 @@
-app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory', 
-	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory) {
+app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory','$window', 
+	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory, $window) {
 
 	$scope.find = function(){
 		TaskFactory.query(function(data) {
@@ -15,8 +15,6 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 
 		
 		$scope.datum = $filter('date')($scope.datum1, 'yyyy-MM-dd');
-	
-		console.log($scope.datum);
 
 		var task = new TaskFactory({
 
@@ -72,15 +70,45 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
       });
     };
 
-	$scope.delete = function(tid) {
-		console.log("Deleted: " + tid);
-		/*$scope.task.$delete(function(response) {
-			console.log('Done.');
-		}, function(errorResponse){
-        	$scope.error = errorResponse.data.message;
-      	});*/
-      	TaskFactory.$delete({},{task_id:tid});
+	$scope.delete = function(id) {
+		 var task = TaskFactory.get({task_id:id},function(response){})
+			task.$delete({task_id:id},function(response){
+			 $window.location.reload();
+			});
 	};
 
+	$scope.newTasks = [];
+    
+    $scope.statusOrFilter = function(filter) {
+        var i = $.inArray(filter, $scope.newTasks);
+        if (i > -1) {
+            $scope.newTasks.splice(i, 1);
+        } else {
+            $scope.newTasks.push(filter);
+        }
+    }
+    
+    $scope.statusFilter = function(task) {
+        if ($scope.newTasks.length > 0) {
+            if ($.inArray(task.task_status, $scope.newTasks) < 0)
+                return;
+        }
+        return task;
+	};
+	
+	$scope.priorityFilter = function(task) {
+        if ($scope.newTasks.length > 0) {
+            if (($.inArray(task.task_priority, $scope.newTasks) < 0) && ($.inArray(task.task_status, $scope.newTasks) < 0))
+                return;
+        }
+        return task;
+	};
+
+	$scope.getLoggedUser = function(){
+        TaskFactory.getLogged(function(data){
+          $scope.loggedUser = data;
+        });
+    };    
+	
 
 }]);

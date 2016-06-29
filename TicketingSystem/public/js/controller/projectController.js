@@ -1,5 +1,5 @@
-app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFactory', '$stateParams',
-		function($scope, ProjectFactory, $location, UserFactory, $stateParams) {
+app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFactory', '$stateParams','$window',
+		function($scope, ProjectFactory, $location, UserFactory, $stateParams,$window) {
 
 	
 	$scope.findUsers = function() {
@@ -10,6 +10,12 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
           	console.log(errorResponse)
           });
       };
+
+  $scope.getLoggedUser = function(){
+        UserFactory.getLogged(function(data){
+          $scope.loggedUser = data;
+        });
+    };    
 
      
 	$scope.project = {};
@@ -45,20 +51,11 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
 	});
 	};
 
-	$scope.delete = function(project){
-      if(project){
-        user.$remove(function(){
-          for(var i in $scope.projects){
-            if($scope.projects[i] === project){
-               $scope.projects.splice(i,1);
-            }
-          }
-        });
-      } else {
-        $scope.project.$remove(function(){
-          $location.path('projects/');
-        });
-      }
+	$scope.delete = function(id){
+      var project = ProjectFactory.get({project_id:id},function(response){})
+      project.$delete({project_id:id},function(response){
+       $window.location.reload();
+      });
     };
 
      $scope.findOne = function() {
@@ -81,7 +78,6 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
     $scope.userName = {};
 
     $scope.getUsers = function() {
-      console.log("Ok, bar udje ovde.");
       
       // main part //
       ProjectFactory.getData({project_id: $stateParams.project_id}, function(data){
@@ -101,7 +97,7 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
     $scope.taskTitle = {};
 
     $scope.getTasks = function() {
-      console.log("Ok, bar udje ovde.");
+     
       
       // main part //
       ProjectFactory.getTaskData({project_id: $stateParams.project_id}, function(data){

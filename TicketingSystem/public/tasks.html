@@ -1,10 +1,39 @@
-<section ng-controller = "taskCtrl" ng-init="find()">
+<section ng-controller = "taskCtrl" ng-init="find(); getLoggedUser()">
         <span data-brix_class="1466800402415">
-            List of tasks<br>
+            Filter data:<br> 
         </span>
      
-    
-        <div> 
+        <div align="left" style="display:inline-block; width:150px;margin-left:20px;">
+            Status:<br>
+            <input type="checkbox" ng-click="statusOrFilter('todo')">To Do<br>
+            <input type="checkbox" ng-click="statusOrFilter('inprogress')">In Progress<br>
+            <input type="checkbox" ng-click="statusOrFilter('verify')">Verify<br>
+            <input type="checkbox" ng-click="statusOrFilter('done')">Done<br>
+            <br>
+            </div>
+            <div align="left" style="display:inline-block; width:150px; margin-left:-20px;">
+            Priority:<br>
+            <input type="checkbox" ng-click="statusOrFilter('blocker')">Blocker<br>
+            <input type="checkbox" ng-click="statusOrFilter('critical')">Critical<br>
+            <input type="checkbox" ng-click="statusOrFilter('major')">Major<br>
+            <input type="checkbox" ng-click="statusOrFilter('minor')">Minor<br>
+            <input type="checkbox" ng-click="statusOrFilter('trivial')">Trivial<br>
+        </div>
+
+        <div data-brix_class="1466800402415">
+               List of tasks<br> 
+        </div>
+     
+
+        <div ng-show="tasks.length==0">
+            <p>There is no task created. Create:</p>
+            <div>
+                <a class="btn" href="#/createtask" data-brix_class="1467029527557"> 
+                    <i class="glyphicon glyphicon-plus"></i>
+                 </a>
+                 </div>
+        </div>
+        <div ng-show="tasks.length>0" ng-show="loggedUser.user_role=='admin'"> 
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -19,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="t in tasks">
+                    <tr ng-repeat="t in tasks | filter: priorityFilter | orderBy : 't.task_creationDate'">
                         <td>{{ t.task_title}}</td>
                         <td>{{ t.task_creationDate}}</td>
                         <td>{{ t.task_description}}</td>
@@ -35,7 +64,7 @@
                             </a>
                         </td>
                         <td>
-                            <a class="btn" href="#/tasks/{{t.task_id}}/delete" data-brix_class="1467029527557">
+                            <a class="btn" ng-click="delete(t.task_id)" data-brix_class="1467029527557">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a>
                         </td>

@@ -27,10 +27,10 @@ class UsersDao extends AbstractDao
         }
     }
 
-    public function delete($user) {
+    public function delete($id) {
         $sql = "DELETE FROM users WHERE user_id = :user_id";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(["user_id" => $user['user_id']]);
+        $stmt->execute(["user_id" => $id]);
     }
 
     public function update($user) {

@@ -1,4 +1,4 @@
-<section ng-controller = "userCtrl" ng-init="find()">
+<section ng-controller = "userCtrl" ng-init="find(); getLoggedUser()">
     <span data-brix_class="1466800402415">
         List of users<br>
     </span>
@@ -26,7 +26,7 @@
                         </a>
                     </td>
                     <td>
-                        <a class="btn" data-ng-click="delete(u)" data-brix_class="1467029527557"> 
+                        <a class="btn" ng-click="delete(u.user_id)" data-brix_class="1467029527557"> 
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </td>

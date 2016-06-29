@@ -1,31 +1,35 @@
-app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams', 
-	function($scope, UserFactory, $location,$stateParams) {
+app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams','$window', 
+	function($scope, UserFactory, $location,$stateParams,$window) {
 
 	$scope.data = {};
 
-	$scope.add = function() {
+	$scope.add = function(isValid) {
 
 		// NAPOMENA ZA EMAIL: Unositi samo u punom obliku - email@email.com, u suprotnom Error na nivou baze //
 		// NAPOMENA ZA ROLE: paziti na broj karaktera inace error na nivou baze //
 
 		console.log("User: NAME:" + $scope.data.name +" , EMAIL:"+ $scope.data.email +" , ROLE:"+ $scope.data.role);
 
-		 var user = new UserFactory({
-			user_name : $scope.data.name,
-			user_lastname : $scope.data.surname,
-			user_email : $scope.data.email,
-			user_password : $scope.data.password,
-			user_role : $scope.data.role
-		})
 
-		user.$save(function(response){
-        $location.path('/users');
-      }, function(errorResponse){
-        $scope.error = errorResponse.data.message;
-      });
+    if (isValid) {
+  		 var user = new UserFactory({
+  			user_name : $scope.data.name,
+  			user_lastname : $scope.data.surname,
+  			user_email : $scope.data.email,
+  			user_password : $scope.data.password,
+  			user_role : $scope.data.role
+  		})
+
+  		user.$save(function(response){
+          $location.path('/users');
+        }, function(errorResponse){
+          $scope.error = errorResponse.data.message;
+        });
+       }else{
+        console.log("i");
+        $scope.submitted=true;
+      }
     };
-
-	
 
 	$scope.find = function(){
   	UserFactory.query(function(data) {
@@ -33,15 +37,11 @@ app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams'
   	});
 	};
 
-	$scope.delete = function(user){
-     if (user) {
-           user.$remove(user);
-           $location.path('/users');
-          } else {
-            $scope.user.$remove(function(response) {
-              $location.path('/users');
-              });
-      }
+	$scope.delete = function(id){
+     var user = UserFactory.get({user_id:id},function(response){})
+      user.$delete({user_id:id},function(response){
+       $window.location.reload();
+      });
     };
 
      $scope.findOne = function() {
@@ -60,4 +60,12 @@ app.controller('userCtrl', ['$scope', 'UserFactory', '$location', '$stateParams'
       });
     };
 
+    $scope.getLoggedUser = function(){
+        UserFactory.getLogged(function(data){
+          $scope.loggedUser = data;
+        });
+    };    
+
+
+  
 }]);

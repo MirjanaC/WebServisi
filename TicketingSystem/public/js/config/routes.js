@@ -5,8 +5,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 
 	.state('dashboard', {
-		url: '/dashboard',
-		templateUrl: '../public/index.php'
+		url: '/',
+		templateUrl: '../public/tasks.html'
 	})
 	.state('users', {
 		url: '/users',

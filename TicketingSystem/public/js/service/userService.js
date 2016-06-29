@@ -7,6 +7,10 @@ app.factory('UserFactory', ['$resource',
         }, {
             update: {
                 method: 'PUT'
+            },
+            getLogged: {
+            	url: '/WebServisi/TicketingSystem/api/logged_user',
+            	method: 'GET'
             }
         });
 	
