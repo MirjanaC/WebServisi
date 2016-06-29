@@ -60,7 +60,7 @@ $app->add(function (ServerRequestInterface $request, ResponseInterface $response
             }
         }
         if ($user_id === null) {
-            //return $response->withStatus(401);
+            return $response->withStatus(401);
         }
     }
 
