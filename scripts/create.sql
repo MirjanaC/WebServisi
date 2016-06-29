@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS TaskUsers;
 DROP TABLE IF EXISTS Comments;
 DROP TABLE IF EXISTS Auth;
 
-CREATE TABLE Users (
+CREATE TABLE users (
 	user_id INT NOT NULL AUTO_INCREMENT,
 	user_name VARCHAR(20) NOT NULL, 
 	user_lastname VARCHAR(20) NOT NULL,
@@ -17,13 +17,13 @@ CREATE TABLE Users (
 	PRIMARY KEY (user_id)
 );
 
-CREATE TABLE Teams (
+CREATE TABLE teams (
 	team_id INT NOT NULL AUTO_INCREMENT,
 	team_name VARCHAR(20) NOT NULL, 
 	PRIMARY KEY (team_id)
 );
 
-CREATE TABLE TeamUsers (
+CREATE TABLE team_users (
 	team_id INT NOT NULL,
 	user_id INT NOT NULL,
 	PRIMARY KEY (team_id, user_id),
@@ -31,7 +31,7 @@ CREATE TABLE TeamUsers (
 	FOREIGN KEY fk_team (team_id) REFERENCES Teams(team_id)
 );
 
-CREATE TABLE Projects (
+CREATE TABLE projects (
 	project_id INT NOT NULL AUTO_INCREMENT,
 	project_name VARCHAR(20) NOT NULL,
 	project_code VARCHAR(5) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE Projects (
     	FOREIGN KEY fk_team (team_id) REFERENCES Teams(team_id)
 );
 
-CREATE TABLE Tasks (
+CREATE TABLE tasks (
 	task_id INT NOT NULL AUTO_INCREMENT,
     	task_mark VARCHAR(10) NOT NULL,
 	task_title VARCHAR(20) NOT NULL, 
@@ -53,7 +53,7 @@ CREATE TABLE Tasks (
     	FOREIGN KEY fk_project (project_id) REFERENCES Projects(project_id)
 );
 
-CREATE TABLE TaskUsers (
+CREATE TABLE task_users (
 	task_id INT NOT NULL,
 	task_creator CHAR(1) NOT NULL,
 	user_id INT NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE TaskUsers (
 	FOREIGN KEY fk_task_ (task_id) REFERENCES Tasks(task_id)
 );
 
-CREATE TABLE Comments (
+CREATE TABLE comments (
 	comment_id INT NOT NULL AUTO_INCREMENT,
 	comment_creationDate DATE NOT NULL, 
 	comment_text VARCHAR(100) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE Comments (
     	FOREIGN KEY fk_comments_task (task_id) REFERENCES Tasks(task_id)
 );
 
-CREATE TABLE Auth (
+CREATE TABLE auth (
 	auth_token VARCHAR(32) NOT NULL,
 	auth_user_id INT NOT NULL,
 	FOREIGN KEY fk_auth_user (auth_user_id) REFERENCES Users(user_id)
