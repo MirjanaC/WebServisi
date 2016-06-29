@@ -229,6 +229,70 @@ $app->post('/tasks', function (Request $request, Response $response) {
 });
 
 #####################################################################
+#                             TEAMS                                 #
+// Fetch all teams
+$app->get('/teams', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /teams");
+
+    $teamsDao = new TeamsDao($this->db);
+    $teams = $teamsDao->fetchAll();
+    $response = json_encode($teams);
+    return $response;
+});
+
+// Fetch team by ID
+$app->get('/teams/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /teams/{id}");
+    $id = $request->getAttribute('id');
+
+    $teamsDao = new TeamsDao($this->db);
+    $team = $teamsDao->fetchById($id);
+    $response = json_encode($team);
+    return $response;
+});
+
+// Delete team by ID
+$app->delete('/teams/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: DELETE /teams/{id}");
+    $id = $request->getAttribute('id');
+
+    $teamsDao = new TeamsDao($this->db);
+    $teamsDao->delete($id);
+    return $response;
+});
+
+// Edit team
+$app->put('/teams', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: PUT /teams");
+    $task = json_decode($request->getBody(), true);
+
+    $teamsDao = new TeamsDao($this->db);
+    $teamsDao->update($task);
+    return $response;
+});
+
+// Add new team
+$app->post('/teams', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: POST /teams");
+    $task = json_decode($request->getBody(), true);
+
+    $teamsDao = new TeamsDao($this->db);
+    $teamsDao->save($task);
+    return $response;
+});
+
+// Fetch all users in team
+$app->get('/teamUsers/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /teamUsers/{id}");
+    $id = $request->getAttribute('id');
+
+    $teamsDao = new TeamsDao($this->db);
+    $teams = $teamsDao->getTeamUsers($id);
+    $response = json_encode($teams);
+    return $response;
+});
+
+#####################################################################
 #                            PROJECTS                               #
 // Fetch all projects
 $app->get('/projects', function (Request $request, Response $response) {
