@@ -1,9 +1,9 @@
-<section ng-controller="userCtrl" ng-init="findOne()">
+<section ng-controller="userCtrl" ng-init="findOne(); getLoggedUser()">
     <span data-brix_class="1466800402415">
         Edit user<br>
     </span>
     <form ng-submit="update()" novalidate>
-    <div>
+    <div ng-show="loggedUser.user_role=='admin'">
         <div class="row" data-brix_class="1466801424887">
             <div class="col-md-2" data-brix_class="1466801408662">
             <span class="col-md-8" name="name" data-brix_class="1466800875659">Name</span>

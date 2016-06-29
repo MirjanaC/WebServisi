@@ -44,7 +44,7 @@
                         <td>Task status</td>
                         <td>Comments</td>
                         <td>Edit</td>
-                        <td>Delete</td>
+                        <td ng-show="loggedUser.user_role=='admin'">Delete</td>
                     </tr>
                 </thead>
                 <tbody ng-show="loggedUser.user_role=='admin'">
@@ -70,7 +70,7 @@
                         </td>
                     </tr>
                 </tbody>
-                <tbody ng-show="loggedUser.user_role=='user'">
+                <tbody ng-show="loggedUser.user_role=='programmer'">
                     <tr ng-repeat="t in tasks | filter: priorityFilter | orderBy : 't.task_creationDate'">
                         <td>{{ t.task_title}}</td>
                         <td>{{ t.task_creationDate}}</td>
@@ -80,6 +80,10 @@
                         </td>
                         <td><a class="btn text-center" href="#/comments" data-brix_class="1467029462861">
                                 <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                        </td>
+                        <td> <a class="btn text-center" href="#/tasks/{{t.task_id}}/edit" data-brix_class="1467029462861">
+                                <i class="glyphicon glyphicon-edit"></i>
                             </a>
                         </td>
                     </tr>

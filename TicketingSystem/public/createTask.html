@@ -1,8 +1,8 @@
-<section ng-controller="taskCtrl" ng-init="findUsers()">
+<section ng-controller="taskCtrl" ng-init="findUsers(); getLoggedUser()">
    <span data-brix_class="1466800402415">
             Create new task<br>
    </span>
-     <div>
+     <div ng-show="loggedUser.user_role=='admin'">
             <div class="row" data-brix_class="1466801424887">
                 <div class="col-md-2" data-brix_class="1466801408662">
                     <span class="col-md-8" name="name" data-brix_class="1466800797345">
