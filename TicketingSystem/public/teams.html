@@ -1,5 +1,5 @@
-<section ng-controller="teamCtrl">
-    <div>
+<section ng-controller="teamCtrl" ng-init="getLoggedUser()">
+    <div ng-show="loggedUser.user_role=='admin'">
         <div class="col-md-3">
             <form>
                 <fieldset class="form-group">

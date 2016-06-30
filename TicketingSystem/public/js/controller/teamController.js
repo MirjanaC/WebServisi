@@ -1,4 +1,4 @@
-app.controller('teamCtrl', function($scope, TeamFactory, $location) {
+app.controller('teamCtrl', function($scope, TeamFactory, $location, UserFactory) {
 
 	// Hold users of current team
 	$scope.teamUsers = [];
@@ -130,5 +130,12 @@ app.controller('teamCtrl', function($scope, TeamFactory, $location) {
 			});
 		});
 	}
+
+	 $scope.getLoggedUser = function(){
+        UserFactory.getLogged(function(data){
+          $scope.loggedUser = data;
+        });
+    };    
+
 
 });
