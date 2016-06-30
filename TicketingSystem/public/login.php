@@ -60,6 +60,8 @@ if ($user_id !== null) {
         <!-- node modules -->
         <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="node_modules/chart.js/Chart.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/controller/loginController.js"></script>
   </body>
