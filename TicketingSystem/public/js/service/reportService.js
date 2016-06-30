@@ -7,7 +7,7 @@ app.factory('ReportFactory', ['$resource', function($resource) {
             getReport1: {
             	url: '/WebServisi/TicketingSystem/api/taskReport/:project_id',
             	method: 'GET',
-            	isArray: true
+            	isArray: true            
             }
         });
 	

@@ -11,6 +11,7 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
           });
       };
 
+
   $scope.getLoggedUser = function(){
         UserFactory.getLogged(function(data){
           $scope.loggedUser = data;
@@ -26,6 +27,7 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
 		 var spliting = $scope.project.name.split(' ');
       val1 = spliting[0];
       val2 = spliting[1];
+
 
       send = new ProjectFactory({
         project_name : $scope.project.name,
@@ -106,5 +108,11 @@ app.controller('projectCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFac
       
     };
 
-
+    $scope.userProjects = ProjectFactory.getUserProjects({ 
+          user_id : 3},
+          function(data){
+       
+      });
+        console.log($scope.userProjects);
+    
 }]);

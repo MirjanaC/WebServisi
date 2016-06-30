@@ -46,11 +46,17 @@ if ($user_id === null) {
     <script type="text/javascript" src="js/service/taskService.js"></script>
     <script type="text/javascript" src="js/service/reportService.js"></script>
 
+     <script type="text/javascript" src="js/service/commentService.js"></script>
+    <script type="text/javascript" src="js/service/reportService.js"></script>
+
     <!-- controllers -->
     <script type="text/javascript" src="js/controller/headerController.js"></script>
     <script type="text/javascript" src="js/controller/userController.js"></script>
     <script type="text/javascript" src="js/controller/projectController.js"></script>
     <script type="text/javascript" src="js/controller/taskController.js"></script>
+
+     <script type="text/javascript" src="js/controller/commentController.js"></script>
+
     <script type="text/javascript" src="js/controller/reportController.js"></script>
 
      <!-- node modules -->

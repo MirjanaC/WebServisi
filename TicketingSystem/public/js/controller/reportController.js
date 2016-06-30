@@ -26,18 +26,6 @@ app.controller('reportCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFact
 
 	$scope.getChartForAssignedTasksTest = function() {
 
-		/*console.log("Bar udje u funkciju.");
-
-		$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Series A', 'Series B'];
-    $scope.data = [
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
-
-    console.log("LABELS: " + angular.toJson($scope.labels));
-    console.log("SERIES: " + angular.toJson($scope.series));
-    console.log("DATA: " + angular.toJson($scope.data));*/
-
     var pieData = [
             {
                     value: 20,
@@ -102,6 +90,8 @@ app.controller('reportCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFact
     }); 
 
   };
+
+	};
 
 
 }]);

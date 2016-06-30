@@ -24,4 +24,5 @@ abstract class AbstractDao {
     public abstract function update($data);
 
     public abstract function delete($id);
+
 }

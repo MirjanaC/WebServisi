@@ -23,8 +23,8 @@
                     </span>
                 </div>
                 <div class="col-md-6">
-                    <input ng-model="task.task_title" class="form-control" name="name" data-brix_class="1466801214715" ng-disabled="loggedUser.user_role==admin">
-                    <input ng-model="task.task_description" class="form-control" name="description" data-brix_class="1466864718449" ng-model="task.task_description">
+                    <input ng-model="task.task_title" class="form-control" name="name" data-brix_class="1466801214715" ng-disabled="loggedUser.user_role=='programmer'">
+                    <input ng-model="task.task_description" class="form-control" name="description" data-brix_class="1466864718449" ng-disabled="loggedUser.user_role=='programmer'" ng-model="task.task_description">
                     <select ng-model="task.task_priority" class="form-control" name="priority" data-brix_class="1466865092412">
                         <option value="Blocker">Blocker</option>
                         <option value="Critical">Critical</option>

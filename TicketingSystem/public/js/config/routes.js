@@ -71,5 +71,4 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/taskReport/:project_id',
 		templateUrl: '../public/taskReport.html'
 	});
-
 });
