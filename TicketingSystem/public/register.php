@@ -98,15 +98,18 @@ if ($user_id !== null) {
 </section>
 
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
-
-    <!-- node modules -->
-    <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controller/userController.js"></script>
-    <script type="text/javascript" src="js/service/userService.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
+        <!-- node modules -->
+        <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="node_modules/chart.js/Chart.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controller/userController.js"></script>
+        <script type="text/javascript" src="js/service/userService.js"></script>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

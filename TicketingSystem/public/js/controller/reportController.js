@@ -91,7 +91,7 @@ app.controller('reportCtrl', ['$scope', 'ProjectFactory', '$location', 'UserFact
 
   };
 
-	};
+	
 
 
 }]);

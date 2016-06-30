@@ -2,7 +2,7 @@
    <span data-brix_class="1466800402415">
             Edit task<br>
    </span>
-     <form ng-submit="update()" novalidate>
+     <form ng-submit="update()" ng-show="loggedUser.user_role=='admin'">
      <div>
             <div class="row" data-brix_class="1466801424887">
                 <div class="col-md-2" data-brix_class="1466801408662">
