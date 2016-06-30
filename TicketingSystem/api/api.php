@@ -292,6 +292,26 @@ $app->get('/teamUsers/{id}', function (Request $request, Response $response) {
     return $response;
 });
 
+// Add new team member
+$app->post('/teamMember', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: POST /teamMember");
+    $teamMember = json_decode($request->getBody(), true);
+
+    $teamsDao = new TeamsDao($this->db);
+    $teamsDao->addTeamMember($teamMember);
+    return $response;
+});
+
+// Delete team member
+$app->delete('/teamMember', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: DELETE /teamMember");
+    $teamMember = json_decode($request->getBody(), true);
+
+    $teamsDao = new TeamsDao($this->db);
+    $teamsDao->deleteTeamMember($teamMember);
+    return $response;
+});
+
 #####################################################################
 #                            PROJECTS                               #
 // Fetch all projects
