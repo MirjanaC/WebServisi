@@ -1,0 +1,121 @@
+<section ng-controller="teamCtrl">
+    <div>
+        <div class="col-md-3">
+            <form>
+                <fieldset class="form-group">
+                    <label for="teamName">Add new team</label>
+                    <input ng-model="team.name" type="text" class="form-control" id="teamName" placeholder="Enter team name" required>
+                </fieldset>
+                <button ng-click="add()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Team name</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="team in teams">
+                        <td>{{ team.team_name }}</td>
+                        <td>
+                            <button ng-click="teamMembers(team)" data-toggle="modal" data-target="#TeamMembers" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-user"></span> Members </button>
+                        </td>
+                        <td>
+                            <button ng-click="addUser(team)" data-toggle="modal" data-target="#AddUserModal" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Add new Member </button>
+                        </td>
+                        <td>
+                            <button ng-click="editTeam(team)" data-toggle="modal" data-target="#EditModal" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit </button>
+                        </td>
+                        <td>
+                            <button type="button" ng-click="delete(team)" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="EditModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Team</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset class="form-group">
+                            <label for="editTeamName">Team name</label>
+                            <input ng-model="editTeam.team_name" type="text" class="form-control" id="editTeamName">
+                        </fieldset>
+                        <button ng-click="submitEdit()" type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="AddUserModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add team member</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr ng-repeat="user in freeUsers">
+                            <td>{{ user.user_name + ' ' + user.user_lastname }}</td>
+                            <td>
+                                <button ng-click="addUserToTeam(user)" type="button" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-plus"></span> Add
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="TeamMembers" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Team members</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr ng-repeat="user in teamUsers">
+                            <td>{{ user.user_name + ' ' + user.user_lastname }}</td>
+                            <td>
+                                <button ng-click="deleteTeamMember(user)" type="button" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-minus"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

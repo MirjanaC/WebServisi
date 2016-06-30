@@ -11,6 +11,7 @@
                 <li><a href="#/projects">Projects</a></li>
                 <li><a href="#/users">Users</a></li>
                 <li><a href="#/tasks">Tasks</a></li>
+                <li><a href="#/teams">Teams</a></li>
             </ul>
         </li>
         <ul class="nav navbar-nav">

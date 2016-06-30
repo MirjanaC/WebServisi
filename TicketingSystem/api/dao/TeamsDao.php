@@ -77,4 +77,32 @@ class TeamsDao extends AbstractDao
             return $stmt->fetchAll();
         }
     }
+
+    public function addTeamMember($teamMember) {
+        $sql = "INSERT INTO team_users (
+                  team_id,
+                  user_id)
+                VALUES (
+                  :team_id,
+                  :user_id
+                )";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute([
+            "team_id" => $teamMember['team_id'],
+            "user_id" => $teamMember['user_id']
+        ]);
+        if(!$result) {
+            throw new Exception("could not save record");
+        }
+    }
+
+    public function deleteTeamMember($teamMember) {
+        $sql = "DELETE FROM team_users WHERE team_id = :team_id AND user_id = :user_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            "team_id" => $teamMember['team_id'],
+            "user_id" => $teamMember['user_id']
+        ]);
+
+    }
 }
