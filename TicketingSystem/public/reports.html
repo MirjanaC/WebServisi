@@ -1,0 +1,58 @@
+<section ng-controller = "reportCtrl" ng-init="getLoggedUser()">
+    
+
+    <div ng-show = "loggedUser.user_role == 'admin'">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Report type</th>
+                    <th>Display</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tasks assigned to users</td>
+                    <td> <a class="btn text-center" href="#/taskReport/{{p_id}}" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Completed tasks</td>
+                    <td> <a class="btn text-center" href="#/completedTask/{{p_id}}" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Creating tasks dynamics</td>
+                    <td> <a class="btn text-center" href="#/ctaskDynamics/{{p_id}}" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Finishing tasks dynamics</td>
+                    <td> <a class="btn text-center" href="#/ftaskDynamics/{{p_id}}" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>User activity</td>
+                    <td> <a class="btn text-center" href="#/activity/{{p_id}}" data-brix_class="1467029462861">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+                <a class="btn" href="#/projects" data-brix_class="1467029527557"> 
+                    <i>Get back</i>
+                </a>
+        </div>
+                
+    </div>
+</section>

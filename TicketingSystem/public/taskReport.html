@@ -1,0 +1,74 @@
+<section ng-controller = "reportCtrl" ng-init="getLoggedUser(); getChartForAssignedTasks()">
+    
+
+    <div ng-show = "loggedUser.user_role == 'admin'">
+        
+            <h2>Tasks assigned to users report</h2>
+
+            <canvas id="canvas" width="800" height="250"></canvas>
+
+            <!--<canvas id="bar" 
+                    class="chart chart-bar" 
+                    width="800"
+                    height="200"
+                    chart-legend="true" 
+                    chart-options="{responsive:false}"
+                    chart-data="data" 
+                    chart-labels="labels" 
+                    chart-series="series">
+            </canvas>-->
+
+            <!--<h2>Completed tasks report</h2>
+
+            <canvas id="bar" 
+                    class="chart chart-bar" 
+                    width="800"
+                    height="200"
+                    chart-legend="true" 
+                    chart-options="{responsive:false}"
+                    chart-data="data" 
+                    chart-labels="labels" 
+                    chart-series="series">
+            </canvas>
+
+            <h2>Creating tasks dynamic report</h2>
+
+            <canvas id="bar" 
+                    class="chart chart-bar" 
+                    width="800"
+                    height="200"
+                    chart-legend="true" 
+                    chart-options="{responsive:false}"
+                    chart-data="data" 
+                    chart-labels="labels" 
+                    chart-series="series">
+            </canvas>
+
+            <h2>Finishing tasks dynamic report</h2>
+
+            <canvas id="bar" 
+                    class="chart chart-bar" 
+                    width="800"
+                    height="200"
+                    chart-legend="true" 
+                    chart-options="{responsive:false}"
+                    chart-data="data" 
+                    chart-labels="labels" 
+                    chart-series="series">
+            </canvas>
+
+            <h2>User activity report</h2>
+
+            <canvas id="bar" 
+                    class="chart chart-bar" 
+                    width="800"
+                    height="200"
+                    chart-legend="true" 
+                    chart-options="{responsive:false}"
+                    chart-data="data" 
+                    chart-labels="labels" 
+                    chart-series="series">
+            </canvas>-->
+                
+    </div>
+</section>

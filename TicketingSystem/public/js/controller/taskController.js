@@ -1,5 +1,5 @@
 app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stateParams','ProjectFactory','$window','UserFactory', 
-	function($scope, $filter, $location, TaskFactory, $stateParams, $ProjectFactory, $window, UserFactory) {
+	function($scope, $filter, $location, TaskFactory, $stateParams, ProjectFactory, $window, UserFactory) {
 
 	$scope.find = function(){
 		TaskFactory.query(function(data) {
@@ -17,17 +17,14 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
 		$scope.datum = $filter('date')($scope.datum1, 'yyyy-MM-dd');
 
 		var task = new TaskFactory({
-
-			task_mark : $scope.task.mark,
-			task_title : $scope.task.name,
-			task_description : $scope.task.description,
-			task_userCreator : $scope.loggedUser,
-			/*task_userAssigned : $scope.task.assigned,*/
+			task_mark : $scope.task.projects.project_code+$scope.task.projects.project_id,
+			task_title : $scope.task.title,
 			task_creationDate : $scope.datum,
+			task_description : $scope.task.description,
 			task_priority : $scope.task.priority,
-			task_status : $scope.task.status
-
-		});
+			task_status : $scope.task.status,
+			project_id : $scope.task.projects.project_id
+		}); 
 
 		console.log("TASK: " + angular.toJson(task));
 
@@ -118,6 +115,15 @@ app.controller('taskCtrl',['$scope', '$filter','$location','TaskFactory', '$stat
           	console.log(errorResponse)
           });
       };
+
+    $scope.findProjects = function() {
+        ProjectFactory.query(function(data){
+           $scope.projects = data;
+          
+        }, function(errorResponse){
+          console.log(errorResponse)
+        });
+    };
 	
 
 }]);

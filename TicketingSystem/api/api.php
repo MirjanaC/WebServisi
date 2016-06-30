@@ -420,4 +420,16 @@ $app->post('/comments', function (Request $request, Response $response) {
     return $response;
 });
 
+#####################################################################
+#                             REPORTS                                #
+$app->get('/taskReport/{id}', function (Request $request, Response $response) {
+    $this->logger->addInfo("Method: GET /reports/{id}");
+    $id = $request->getAttribute('id');
+
+    $reports = new ReportsQuery($this->db);
+    $report = $reports->fetchAssignedTasks($id);
+    $response = json_encode($report);
+    return $response;
+});
+
 $app->run();
